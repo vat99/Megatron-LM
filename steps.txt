@@ -2,3 +2,14 @@
 sudo docker run --gpus all -it --rm -v /home/ubuntu/Megatron:/workspace nvcr.io/nvidia/pytorch:20.12-py3
 
 # setup the dataset
+python tools/preprocess_data.py \
+       --input datasets/my-corpus.json \
+       --output-prefix my-gpt2 \
+       --vocab gpt2-vocab.json \
+       --dataset-impl mmap \
+       --tokenizer-type GPT2BPETokenizer \
+       --merge-file gpt2-merges.txt \
+       --append-eod
+
+# run gpt2-xl 8node distributed
+./examples/pretrain_gpt_distributed.sh 2>&1 | tee log_gpt_distributed.txt

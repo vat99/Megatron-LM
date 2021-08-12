@@ -1,0 +1,485 @@
+using world size: 8, data-parallel-size: 8, tensor-model-parallel size: 1, pipeline-model-parallel size: 1 
+using torch.float16 for parameters ...
+------------------------ arguments ------------------------
+  accumulate_allreduce_grads_in_fp32 .............. False
+  adam_beta1 ...................................... 0.9
+  adam_beta2 ...................................... 0.999
+  adam_eps ........................................ 1e-08
+  adlr_autoresume ................................. False
+  adlr_autoresume_interval ........................ 1000
+  apply_query_key_layer_scaling ................... True
+  apply_residual_connection_post_layernorm ........ False
+  attention_dropout ............................... 0.1
+  attention_softmax_in_fp32 ....................... False
+  bert_binary_head ................................ True
+  bert_load ....................................... None
+  bf16 ............................................ False
+  bias_dropout_fusion ............................. True
+  bias_gelu_fusion ................................ True
+  biencoder_projection_dim ........................ 0
+  biencoder_shared_query_context_model ............ False
+  block_data_path ................................. None
+  checkpoint_activations .......................... True
+  checkpoint_num_layers ........................... 1
+  clip_grad ....................................... 1.0
+  consumed_train_samples .......................... 0
+  consumed_valid_samples .......................... 0
+  data_impl ....................................... mmap
+  data_parallel_size .............................. 8
+  data_path ....................................... ['/workspace/Megatron-LM/my-gpt2_text_document']
+  dataloader_type ................................. single
+  DDP_impl ........................................ local
+  decoder_seq_length .............................. None
+  distribute_checkpointed_activations ............. False
+  distributed_backend ............................. nccl
+  embedding_path .................................. None
+  encoder_seq_length .............................. 1024
+  eod_mask_loss ................................... False
+  eval_interval ................................... 1000
+  eval_iters ...................................... 10
+  evidence_data_path .............................. None
+  exit_duration_in_mins ........................... None
+  exit_interval ................................... None
+  ffn_hidden_size ................................. 6400
+  finetune ........................................ False
+  fp16 ............................................ True
+  fp16_lm_cross_entropy ........................... False
+  fp32_residual_connection ........................ False
+  global_batch_size ............................... 512
+  hidden_dropout .................................. 0.1
+  hidden_size ..................................... 1600
+  hysteresis ...................................... 2
+  ict_head_size ................................... None
+  ict_load ........................................ None
+  img_dim ......................................... 224
+  indexer_batch_size .............................. 128
+  indexer_log_interval ............................ 1000
+  init_method_std ................................. 0.02
+  init_method_xavier_uniform ...................... False
+  initial_loss_scale .............................. 4294967296
+  kv_channels ..................................... 64
+  layernorm_epsilon ............................... 1e-05
+  lazy_mpu_init ................................... None
+  load ............................................ None
+  local_rank ...................................... 0
+  log_batch_size_to_tensorboard ................... False
+  log_interval .................................... 1
+  log_learning_rate_to_tensorboard ................ True
+  log_loss_scale_to_tensorboard ................... True
+  log_memory_to_tensorboard ....................... False
+  log_num_zeros_in_grad ........................... False
+  log_params_norm ................................. False
+  log_timers_to_tensorboard ....................... False
+  log_validation_ppl_to_tensorboard ............... False
+  loss_scale ...................................... None
+  loss_scale_window ............................... 1000
+  lr .............................................. 1.5e-05
+  lr_decay_iters .................................. 320
+  lr_decay_samples ................................ None
+  lr_decay_style .................................. cosine
+  lr_warmup_fraction .............................. 0.01
+  lr_warmup_iters ................................. 0
+  lr_warmup_samples ............................... 0
+  make_vocab_size_divisible_by .................... 128
+  mask_prob ....................................... 0.15
+  masked_softmax_fusion ........................... True
+  max_position_embeddings ......................... 1024
+  merge_file ...................................... /workspace/Megatron-LM/gpt2-merges.txt
+  micro_batch_size ................................ 8
+  min_loss_scale .................................. 1.0
+  min_lr .......................................... 1e-05
+  mmap_warmup ..................................... False
+  no_load_optim ................................... None
+  no_load_rng ..................................... None
+  no_save_optim ................................... None
+  no_save_rng ..................................... None
+  num_attention_heads ............................. 25
+  num_channels .................................... 3
+  num_classes ..................................... 1000
+  num_layers ...................................... 48
+  num_layers_per_virtual_pipeline_stage ........... None
+  num_workers ..................................... 2
+  onnx_safe ....................................... None
+  openai_gelu ..................................... False
+  optimizer ....................................... adam
+  override_lr_scheduler ........................... False
+  params_dtype .................................... torch.float16
+  patch_dim ....................................... 16
+  pipeline_model_parallel_size .................... 1
+  query_in_block_prob ............................. 0.1
+  rampup_batch_size ............................... None
+  rank ............................................ 0
+  reset_attention_mask ............................ False
+  reset_position_ids .............................. False
+  retriever_report_topk_accuracies ................ []
+  retriever_score_scaling ......................... False
+  retriever_seq_length ............................ 256
+  sample_rate ..................................... 1.0
+  save ............................................ None
+  save_interval ................................... 10000
+  scatter_gather_tensors_in_pipeline .............. True
+  seed ............................................ 1234
+  seq_length ...................................... 1024
+  sgd_momentum .................................... 0.9
+  short_seq_prob .................................. 0.1
+  split ........................................... 800,100,100
+  tensor_model_parallel_size ...................... 1
+  tensorboard_dir ................................. None
+  tensorboard_log_interval ........................ 1
+  tensorboard_queue_size .......................... 1000
+  titles_data_path ................................ None
+  tokenizer_type .................................. GPT2BPETokenizer
+  train_iters ..................................... 1000
+  train_samples ................................... None
+  use_checkpoint_lr_scheduler ..................... False
+  use_contiguous_buffers_in_ddp ................... False
+  use_cpu_initialization .......................... None
+  use_one_sent_docs ............................... False
+  virtual_pipeline_model_parallel_size ............ None
+  vocab_extra_ids ................................. 0
+  vocab_file ...................................... /workspace/Megatron-LM/gpt2-vocab.json
+  weight_decay .................................... 0.01
+  world_size ...................................... 8
+-------------------- end of arguments ---------------------
+setting number of micro-batches to constant 8
+> building GPT2BPETokenizer tokenizer ...
+ > padded vocab (size: 50257) with 47 dummy tokens (new size: 50304)
+> initializing torch distributed ...
+> initializing tensor model parallel with size 1
+> initializing pipeline model parallel with size 1
+> setting random seeds to 1234 ...
+> initializing model parallel cuda seeds on global rank 0, model parallel rank 0, and data parallel rank 0 with model parallel seed: 3952 and data parallel seed: 1234
+> compiling dataset index builder ...
+make: Entering directory '/workspace/Megatron-LM/megatron/data'
+make: Nothing to be done for 'default'.
+make: Leaving directory '/workspace/Megatron-LM/megatron/data'
+>>> done with dataset index builder. Compilation time: 0.063 seconds
+> compiling and loading fused kernels ...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /workspace/Megatron-LM/megatron/fused_kernels/build/build.ninja...
+Building extension module scaled_upper_triang_masked_softmax_cuda...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module scaled_upper_triang_masked_softmax_cuda...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /workspace/Megatron-LM/megatron/fused_kernels/build/build.ninja...
+Building extension module scaled_masked_softmax_cuda...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module scaled_masked_softmax_cuda...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /workspace/Megatron-LM/megatron/fused_kernels/build/build.ninja...
+Building extension module fused_mix_prec_layer_norm_cuda...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module fused_mix_prec_layer_norm_cuda...
+>>> done with compiling and loading fused kernels. Compilation time: 1.329 seconds
+time to initialize megatron (seconds): 0.560
+[after megatron is initialized] datetime: 2021-08-12 18:16:32 
+building GPT model ...
+ > number of parameters on (tensor, pipeline) model parallel rank (0, 0): 1557686400
+> learning rate decay style: cosine
+[after model, optimizer, and learning rate scheduler are built] datetime: 2021-08-12 18:16:34 
+> building train, validation, and test datasets ...
+ > datasets target sizes (minimum size):
+    train:      512000
+    validation: 10240
+    test:       5120
+> building train, validation, and test datasets for GPT ...
+ > building dataset index ...
+    reading sizes...
+    reading pointers...
+    reading document index...
+    creating numpy buffer of mmap...
+    creating memory view of numpy buffer...
+ > finished creating indexed dataset in 0.001156 seconds
+    number of documents: 398
+ > dataset split:
+    train:
+     document indices in [0, 318) total of 318 documents
+    validation:
+     document indices in [318, 358) total of 40 documents
+    test:
+     document indices in [358, 398) total of 40 documents
+ > loading doc-idx mapping from /workspace/Megatron-LM/my-gpt2_text_document_train_indexmap_512000ns_1024sl_1234s_doc_idx.npy
+ > loading sample-idx mapping from /workspace/Megatron-LM/my-gpt2_text_document_train_indexmap_512000ns_1024sl_1234s_sample_idx.npy
+ > loading shuffle-idx mapping from /workspace/Megatron-LM/my-gpt2_text_document_train_indexmap_512000ns_1024sl_1234s_shuffle_idx.npy
+    loaded indexed file in 0.002 seconds
+    total number of samples: 512002
+    total number of epochs: 274497
+ > WARNING: could not find index map files, building the indices on rank 0 ...
+ > last epoch number of samples (1) is larger than 80% of number of samples per epoch (0), setting separate_last_epoch to False
+ > elasped time to build and save doc-idx mapping (seconds): 0.065232
+    using:
+     number of documents:       40
+     number of epochs:          43691
+     sequence length:           1024
+     total number of samples:   10240
+ > elasped time to build and save sample-idx mapping (seconds): 0.002358
+ > building shuffle index with split [0, 10240) and [10240, 10240) ...
+ > elasped time to build and save shuffle-idx mapping (seconds): 0.000522
+ > loading doc-idx mapping from /workspace/Megatron-LM/my-gpt2_text_document_valid_indexmap_10240ns_1024sl_1234s_doc_idx.npy
+ > loading sample-idx mapping from /workspace/Megatron-LM/my-gpt2_text_document_valid_indexmap_10240ns_1024sl_1234s_sample_idx.npy
+ > loading shuffle-idx mapping from /workspace/Megatron-LM/my-gpt2_text_document_valid_indexmap_10240ns_1024sl_1234s_shuffle_idx.npy
+    loaded indexed file in 0.001 seconds
+    total number of samples: 10241
+    total number of epochs: 43691
+ > loading doc-idx mapping from /workspace/Megatron-LM/my-gpt2_text_document_test_indexmap_5120ns_1024sl_1234s_doc_idx.npy
+ > loading sample-idx mapping from /workspace/Megatron-LM/my-gpt2_text_document_test_indexmap_5120ns_1024sl_1234s_sample_idx.npy
+ > loading shuffle-idx mapping from /workspace/Megatron-LM/my-gpt2_text_document_test_indexmap_5120ns_1024sl_1234s_shuffle_idx.npy
+    loaded indexed file in 0.001 seconds
+    total number of samples: 5121
+    total number of epochs: 21846
+> finished creating GPT datasets ...
+[after dataloaders are built] datetime: 2021-08-12 18:16:39 
+done with setup ...
+training ...
+time (ms) | model-and-optimizer-setup: 1902.66 | train/valid/test-data-iterators-setup: 5050.62
+[before the start of training step] datetime: 2021-08-12 18:16:39 
+ iteration        1/    1000 | consumed samples:          512 | elapsed time per iteration (ms): 10174.6 | learning rate: 0.000E+00 | global batch size:   512 | loss scale: 4294967296.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 3817.25 | backward-compute: 5865.47 | backward-params-all-reduce: 86.67 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 18.31 | optimizer-unscale-and-check-inf: 381.41 | optimizer: 399.80 | batch-generator: 8.36
+ iteration        2/    1000 | consumed samples:         1024 | elapsed time per iteration (ms): 7393.6 | learning rate: 0.000E+00 | global batch size:   512 | loss scale: 2147483648.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2040.20 | backward-compute: 5269.40 | backward-params-all-reduce: 53.33 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.27 | optimizer-unscale-and-check-inf: 12.94 | optimizer: 24.39 | batch-generator: 6.74
+ iteration        3/    1000 | consumed samples:         1536 | elapsed time per iteration (ms): 7400.9 | learning rate: 0.000E+00 | global batch size:   512 | loss scale: 1073741824.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2042.84 | backward-compute: 5274.48 | backward-params-all-reduce: 53.62 | backward-embedding-all-reduce: 0.03 | optimizer-copy-to-main-grad: 11.27 | optimizer-unscale-and-check-inf: 12.97 | optimizer: 24.35 | batch-generator: 7.02
+ iteration        4/    1000 | consumed samples:         2048 | elapsed time per iteration (ms): 7435.2 | learning rate: 0.000E+00 | global batch size:   512 | loss scale: 536870912.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2039.76 | backward-compute: 5276.33 | backward-params-all-reduce: 89.26 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.27 | optimizer-unscale-and-check-inf: 12.87 | optimizer: 24.24 | batch-generator: 6.71
+ iteration        5/    1000 | consumed samples:         2560 | elapsed time per iteration (ms): 7404.5 | learning rate: 0.000E+00 | global batch size:   512 | loss scale: 268435456.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2041.92 | backward-compute: 5280.38 | backward-params-all-reduce: 52.42 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.28 | optimizer-unscale-and-check-inf: 12.91 | optimizer: 24.28 | batch-generator: 6.57
+ iteration        6/    1000 | consumed samples:         3072 | elapsed time per iteration (ms): 7469.1 | learning rate: 0.000E+00 | global batch size:   512 | loss scale: 134217728.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2049.04 | backward-compute: 5338.54 | backward-params-all-reduce: 51.75 | backward-embedding-all-reduce: 0.03 | optimizer-copy-to-main-grad: 11.32 | optimizer-unscale-and-check-inf: 12.87 | optimizer: 24.29 | batch-generator: 6.99
+ iteration        7/    1000 | consumed samples:         3584 | elapsed time per iteration (ms): 7487.7 | learning rate: 0.000E+00 | global batch size:   512 | loss scale: 67108864.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2047.97 | backward-compute: 5354.05 | backward-params-all-reduce: 55.68 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.32 | optimizer-unscale-and-check-inf: 12.92 | optimizer: 24.34 | batch-generator: 6.49
+ iteration        8/    1000 | consumed samples:         4096 | elapsed time per iteration (ms): 7483.3 | learning rate: 0.000E+00 | global batch size:   512 | loss scale: 33554432.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2047.37 | backward-compute: 5350.96 | backward-params-all-reduce: 55.11 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.31 | optimizer-unscale-and-check-inf: 12.91 | optimizer: 24.33 | batch-generator: 6.36
+ iteration        9/    1000 | consumed samples:         4608 | elapsed time per iteration (ms): 7494.7 | learning rate: 0.000E+00 | global batch size:   512 | loss scale: 16777216.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2056.95 | backward-compute: 5353.40 | backward-params-all-reduce: 54.69 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.34 | optimizer-unscale-and-check-inf: 12.70 | optimizer: 24.14 | batch-generator: 6.32
+ iteration       10/    1000 | consumed samples:         5120 | elapsed time per iteration (ms): 7502.0 | learning rate: 0.000E+00 | global batch size:   512 | loss scale: 8388608.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2063.51 | backward-compute: 5351.12 | backward-params-all-reduce: 56.40 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.31 | optimizer-unscale-and-check-inf: 12.54 | optimizer: 23.96 | batch-generator: 6.88
+ iteration       11/    1000 | consumed samples:         5632 | elapsed time per iteration (ms): 7503.3 | learning rate: 0.000E+00 | global batch size:   512 | loss scale: 4194304.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2063.67 | backward-compute: 5353.06 | backward-params-all-reduce: 57.31 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.31 | optimizer-unscale-and-check-inf: 12.35 | optimizer: 23.81 | batch-generator: 6.57
+ iteration       12/    1000 | consumed samples:         6144 | elapsed time per iteration (ms): 7503.7 | learning rate: 0.000E+00 | global batch size:   512 | loss scale: 2097152.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2061.25 | backward-compute: 5355.16 | backward-params-all-reduce: 58.13 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.32 | optimizer-unscale-and-check-inf: 12.11 | optimizer: 23.53 | batch-generator: 6.39
+ iteration       13/    1000 | consumed samples:         6656 | elapsed time per iteration (ms): 7503.7 | learning rate: 0.000E+00 | global batch size:   512 | loss scale: 1048576.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2064.50 | backward-compute: 5353.90 | backward-params-all-reduce: 56.68 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.33 | optimizer-unscale-and-check-inf: 11.78 | optimizer: 23.21 | batch-generator: 6.67
+ iteration       14/    1000 | consumed samples:         7168 | elapsed time per iteration (ms): 7511.9 | learning rate: 0.000E+00 | global batch size:   512 | loss scale: 524288.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2069.83 | backward-compute: 5357.31 | backward-params-all-reduce: 56.00 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.35 | optimizer-unscale-and-check-inf: 11.74 | optimizer: 23.19 | batch-generator: 6.79
+ iteration       15/    1000 | consumed samples:         7680 | elapsed time per iteration (ms): 7516.6 | learning rate: 0.000E+00 | global batch size:   512 | loss scale: 262144.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2070.86 | backward-compute: 5360.18 | backward-params-all-reduce: 56.75 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.35 | optimizer-unscale-and-check-inf: 11.72 | optimizer: 23.18 | batch-generator: 6.59
+ iteration       16/    1000 | consumed samples:         8192 | elapsed time per iteration (ms): 7517.2 | learning rate: 0.000E+00 | global batch size:   512 | loss scale: 131072.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2071.27 | backward-compute: 5359.44 | backward-params-all-reduce: 57.90 | backward-embedding-all-reduce: 0.03 | optimizer-copy-to-main-grad: 11.33 | optimizer-unscale-and-check-inf: 11.67 | optimizer: 23.11 | batch-generator: 6.55
+ iteration       17/    1000 | consumed samples:         8704 | elapsed time per iteration (ms): 7515.3 | learning rate: 0.000E+00 | global batch size:   512 | loss scale: 65536.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2074.40 | backward-compute: 5353.99 | backward-params-all-reduce: 58.23 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.32 | optimizer-unscale-and-check-inf: 11.70 | optimizer: 23.12 | batch-generator: 6.42
+ iteration       18/    1000 | consumed samples:         9216 | elapsed time per iteration (ms): 9165.6 | learning rate: 4.687E-06 | global batch size:   512 | lm loss: 1.129843E+01 | loss scale: 65536.0 | grad norm: 199.069 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2072.67 | backward-compute: 5356.19 | backward-params-all-reduce: 58.53 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.35 | optimizer-unscale-and-check-inf: 11.69 | optimizer-clip-main-grad: 18.91 | optimizer-copy-main-to-model-params: 12.05 | optimizer: 1672.62 | batch-generator: 6.52
+[Rank 0] (after 18 iterations) memory (MB) | allocated: 30132.1474609375 | max allocated: 30132.15185546875 | reserved: 30538.0 | max reserved: 30538.0
+ iteration       19/    1000 | consumed samples:         9728 | elapsed time per iteration (ms): 7610.3 | learning rate: 9.375E-06 | global batch size:   512 | lm loss: 1.129826E+01 | loss scale: 65536.0 | grad norm: 199.195 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2077.27 | backward-compute: 5351.20 | backward-params-all-reduce: 84.85 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.36 | optimizer-unscale-and-check-inf: 11.69 | optimizer-clip-main-grad: 18.73 | optimizer-copy-main-to-model-params: 11.82 | optimizer: 90.18 | batch-generator: 6.70
+ iteration       20/    1000 | consumed samples:        10240 | elapsed time per iteration (ms): 7590.6 | learning rate: 1.406E-05 | global batch size:   512 | lm loss: 5.589073E+00 | loss scale: 65536.0 | grad norm: 83.659 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2084.51 | backward-compute: 5352.11 | backward-params-all-reduce: 58.08 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.35 | optimizer-unscale-and-check-inf: 11.74 | optimizer-clip-main-grad: 18.72 | optimizer-copy-main-to-model-params: 11.79 | optimizer: 90.18 | batch-generator: 6.64
+ iteration       21/    1000 | consumed samples:        10752 | elapsed time per iteration (ms): 7590.4 | learning rate: 1.500E-05 | global batch size:   512 | lm loss: 3.110712E+00 | loss scale: 65536.0 | grad norm: 81.315 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2082.11 | backward-compute: 5354.02 | backward-params-all-reduce: 58.22 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.36 | optimizer-unscale-and-check-inf: 11.72 | optimizer-clip-main-grad: 18.81 | optimizer-copy-main-to-model-params: 11.75 | optimizer: 90.23 | batch-generator: 6.60
+ iteration       22/    1000 | consumed samples:        11264 | elapsed time per iteration (ms): 7589.7 | learning rate: 1.500E-05 | global batch size:   512 | lm loss: 4.417431E+00 | loss scale: 65536.0 | grad norm: 65.846 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2086.79 | backward-compute: 5346.86 | backward-params-all-reduce: 59.80 | backward-embedding-all-reduce: 0.03 | optimizer-copy-to-main-grad: 11.38 | optimizer-unscale-and-check-inf: 11.83 | optimizer-clip-main-grad: 18.75 | optimizer-copy-main-to-model-params: 11.85 | optimizer: 90.43 | batch-generator: 6.49
+ iteration       23/    1000 | consumed samples:        11776 | elapsed time per iteration (ms): 7588.5 | learning rate: 1.500E-05 | global batch size:   512 | lm loss: 3.209827E+00 | loss scale: 65536.0 | grad norm: 33.922 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2087.19 | backward-compute: 5347.65 | backward-params-all-reduce: 57.58 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.36 | optimizer-unscale-and-check-inf: 11.75 | optimizer-clip-main-grad: 18.75 | optimizer-copy-main-to-model-params: 11.77 | optimizer: 90.22 | batch-generator: 6.54
+ iteration       24/    1000 | consumed samples:        12288 | elapsed time per iteration (ms): 7590.0 | learning rate: 1.500E-05 | global batch size:   512 | lm loss: 2.121404E+00 | loss scale: 65536.0 | grad norm: 32.627 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2089.81 | backward-compute: 5343.07 | backward-params-all-reduce: 61.20 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.33 | optimizer-unscale-and-check-inf: 11.77 | optimizer-clip-main-grad: 18.75 | optimizer-copy-main-to-model-params: 11.77 | optimizer: 90.23 | batch-generator: 6.60
+ iteration       25/    1000 | consumed samples:        12800 | elapsed time per iteration (ms): 7534.3 | learning rate: 1.500E-05 | global batch size:   512 | loss scale: 32768.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2096.57 | backward-compute: 5349.09 | backward-params-all-reduce: 59.59 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.34 | optimizer-unscale-and-check-inf: 11.77 | optimizer-clip-main-grad: 0.00 | optimizer-copy-main-to-model-params: 0.00 | optimizer: 23.21 | batch-generator: 7.26
+ iteration       26/    1000 | consumed samples:        13312 | elapsed time per iteration (ms): 7604.9 | learning rate: 1.500E-05 | global batch size:   512 | lm loss: 1.983015E+00 | loss scale: 32768.0 | grad norm: 59.450 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2099.61 | backward-compute: 5349.10 | backward-params-all-reduce: 58.75 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.36 | optimizer-unscale-and-check-inf: 11.71 | optimizer-clip-main-grad: 18.81 | optimizer-copy-main-to-model-params: 11.80 | optimizer: 90.25 | batch-generator: 7.74
+ iteration       27/    1000 | consumed samples:        13824 | elapsed time per iteration (ms): 7616.6 | learning rate: 1.500E-05 | global batch size:   512 | lm loss: 8.971553E-01 | loss scale: 32768.0 | grad norm: 38.597 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2107.10 | backward-compute: 5353.40 | backward-params-all-reduce: 60.03 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.35 | optimizer-unscale-and-check-inf: 11.78 | optimizer-clip-main-grad: 18.79 | optimizer-copy-main-to-model-params: 11.78 | optimizer: 90.28 | batch-generator: 7.53
+ iteration       28/    1000 | consumed samples:        14336 | elapsed time per iteration (ms): 7618.4 | learning rate: 1.499E-05 | global batch size:   512 | lm loss: 2.803980E-01 | loss scale: 32768.0 | grad norm: 16.536 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2113.64 | backward-compute: 5347.72 | backward-params-all-reduce: 61.08 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.36 | optimizer-unscale-and-check-inf: 11.73 | optimizer-clip-main-grad: 18.78 | optimizer-copy-main-to-model-params: 11.77 | optimizer: 90.15 | batch-generator: 7.49
+ iteration       29/    1000 | consumed samples:        14848 | elapsed time per iteration (ms): 7620.6 | learning rate: 1.499E-05 | global batch size:   512 | lm loss: 2.282694E-01 | loss scale: 32768.0 | grad norm: 18.247 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2122.17 | backward-compute: 5343.29 | backward-params-all-reduce: 59.14 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.33 | optimizer-unscale-and-check-inf: 11.74 | optimizer-clip-main-grad: 18.75 | optimizer-copy-main-to-model-params: 11.77 | optimizer: 90.26 | batch-generator: 7.59
+ iteration       30/    1000 | consumed samples:        15360 | elapsed time per iteration (ms): 7611.3 | learning rate: 1.499E-05 | global batch size:   512 | lm loss: 6.966225E-01 | loss scale: 32768.0 | grad norm: 25.266 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2112.44 | backward-compute: 5340.71 | backward-params-all-reduce: 62.16 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.34 | optimizer-unscale-and-check-inf: 11.78 | optimizer-clip-main-grad: 18.76 | optimizer-copy-main-to-model-params: 11.79 | optimizer: 90.25 | batch-generator: 7.36
+ iteration       31/    1000 | consumed samples:        15872 | elapsed time per iteration (ms): 7604.4 | learning rate: 1.499E-05 | global batch size:   512 | lm loss: 4.050678E-01 | loss scale: 32768.0 | grad norm: 12.785 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2112.51 | backward-compute: 5336.89 | backward-params-all-reduce: 59.16 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.34 | optimizer-unscale-and-check-inf: 11.77 | optimizer-clip-main-grad: 18.74 | optimizer-copy-main-to-model-params: 11.76 | optimizer: 90.15 | batch-generator: 7.50
+ iteration       32/    1000 | consumed samples:        16384 | elapsed time per iteration (ms): 7599.8 | learning rate: 1.499E-05 | global batch size:   512 | lm loss: 2.113325E-01 | loss scale: 32768.0 | grad norm: 7.543 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2107.06 | backward-compute: 5336.50 | backward-params-all-reduce: 60.29 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.34 | optimizer-unscale-and-check-inf: 11.74 | optimizer-clip-main-grad: 18.78 | optimizer-copy-main-to-model-params: 11.77 | optimizer: 90.19 | batch-generator: 7.56
+ iteration       33/    1000 | consumed samples:        16896 | elapsed time per iteration (ms): 7585.2 | learning rate: 1.498E-05 | global batch size:   512 | lm loss: 1.756881E-01 | loss scale: 32768.0 | grad norm: 6.180 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2100.53 | backward-compute: 5327.58 | backward-params-all-reduce: 60.92 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.38 | optimizer-unscale-and-check-inf: 11.75 | optimizer-clip-main-grad: 18.75 | optimizer-copy-main-to-model-params: 11.79 | optimizer: 90.08 | batch-generator: 7.99
+ iteration       34/    1000 | consumed samples:        17408 | elapsed time per iteration (ms): 7576.2 | learning rate: 1.498E-05 | global batch size:   512 | lm loss: 1.953577E-01 | loss scale: 32768.0 | grad norm: 7.081 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2095.82 | backward-compute: 5325.26 | backward-params-all-reduce: 59.14 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.32 | optimizer-unscale-and-check-inf: 11.75 | optimizer-clip-main-grad: 18.78 | optimizer-copy-main-to-model-params: 11.74 | optimizer: 90.14 | batch-generator: 7.55
+ iteration       35/    1000 | consumed samples:        17920 | elapsed time per iteration (ms): 7573.8 | learning rate: 1.498E-05 | global batch size:   512 | lm loss: 1.606324E-01 | loss scale: 32768.0 | grad norm: 5.548 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2100.11 | backward-compute: 5319.25 | backward-params-all-reduce: 58.43 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.36 | optimizer-unscale-and-check-inf: 11.79 | optimizer-clip-main-grad: 18.75 | optimizer-copy-main-to-model-params: 11.77 | optimizer: 90.25 | batch-generator: 7.59
+ iteration       36/    1000 | consumed samples:        18432 | elapsed time per iteration (ms): 7569.6 | learning rate: 1.497E-05 | global batch size:   512 | lm loss: 1.748725E-01 | loss scale: 32768.0 | grad norm: 5.929 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2102.71 | backward-compute: 5311.57 | backward-params-all-reduce: 59.47 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.35 | optimizer-unscale-and-check-inf: 11.74 | optimizer-clip-main-grad: 18.78 | optimizer-copy-main-to-model-params: 11.74 | optimizer: 90.15 | batch-generator: 7.40
+ iteration       37/    1000 | consumed samples:        18944 | elapsed time per iteration (ms): 7569.2 | learning rate: 1.497E-05 | global batch size:   512 | lm loss: 1.757525E-01 | loss scale: 32768.0 | grad norm: 5.751 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2095.85 | backward-compute: 5319.43 | backward-params-all-reduce: 57.90 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.34 | optimizer-unscale-and-check-inf: 11.80 | optimizer-clip-main-grad: 18.78 | optimizer-copy-main-to-model-params: 11.76 | optimizer: 90.21 | batch-generator: 7.45
+ iteration       38/    1000 | consumed samples:        19456 | elapsed time per iteration (ms): 7597.5 | learning rate: 1.497E-05 | global batch size:   512 | lm loss: 1.205151E-01 | loss scale: 32768.0 | grad norm: 1.532 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2094.45 | backward-compute: 5308.33 | backward-params-all-reduce: 98.61 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.30 | optimizer-unscale-and-check-inf: 11.73 | optimizer-clip-main-grad: 18.79 | optimizer-copy-main-to-model-params: 11.86 | optimizer: 90.22 | batch-generator: 7.53
+ iteration       39/    1000 | consumed samples:        19968 | elapsed time per iteration (ms): 7542.9 | learning rate: 1.496E-05 | global batch size:   512 | lm loss: 1.168510E-01 | loss scale: 32768.0 | grad norm: 0.542 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2089.84 | backward-compute: 5310.25 | backward-params-all-reduce: 56.57 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.35 | optimizer-unscale-and-check-inf: 11.75 | optimizer-clip-main-grad: 8.70 | optimizer-copy-main-to-model-params: 11.93 | optimizer: 80.33 | batch-generator: 7.54
+ iteration       40/    1000 | consumed samples:        20480 | elapsed time per iteration (ms): 7568.7 | learning rate: 1.496E-05 | global batch size:   512 | lm loss: 1.395209E-01 | loss scale: 32768.0 | grad norm: 3.656 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2102.22 | backward-compute: 5311.51 | backward-params-all-reduce: 58.21 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.35 | optimizer-unscale-and-check-inf: 11.76 | optimizer-clip-main-grad: 18.71 | optimizer-copy-main-to-model-params: 11.79 | optimizer: 90.15 | batch-generator: 7.71
+ iteration       41/    1000 | consumed samples:        20992 | elapsed time per iteration (ms): 7643.9 | learning rate: 1.495E-05 | global batch size:   512 | lm loss: 1.185269E-01 | loss scale: 32768.0 | grad norm: 1.265 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2186.30 | backward-compute: 5305.09 | backward-params-all-reduce: 56.28 | backward-embedding-all-reduce: 0.03 | optimizer-copy-to-main-grad: 11.33 | optimizer-unscale-and-check-inf: 11.76 | optimizer-clip-main-grad: 18.73 | optimizer-copy-main-to-model-params: 11.82 | optimizer: 90.22 | batch-generator: 8.03
+ iteration       42/    1000 | consumed samples:        21504 | elapsed time per iteration (ms): 7563.5 | learning rate: 1.495E-05 | global batch size:   512 | lm loss: 1.809161E-01 | loss scale: 32768.0 | grad norm: 5.252 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2091.44 | backward-compute: 5318.06 | backward-params-all-reduce: 56.66 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.35 | optimizer-unscale-and-check-inf: 11.81 | optimizer-clip-main-grad: 18.80 | optimizer-copy-main-to-model-params: 11.80 | optimizer: 90.29 | batch-generator: 7.64
+ iteration       43/    1000 | consumed samples:        22016 | elapsed time per iteration (ms): 7565.8 | learning rate: 1.494E-05 | global batch size:   512 | lm loss: 2.008140E-01 | loss scale: 32768.0 | grad norm: 5.599 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2093.54 | backward-compute: 5320.08 | backward-params-all-reduce: 56.38 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.33 | optimizer-unscale-and-check-inf: 11.74 | optimizer-clip-main-grad: 18.75 | optimizer-copy-main-to-model-params: 11.83 | optimizer: 90.11 | batch-generator: 7.06
+ iteration       44/    1000 | consumed samples:        22528 | elapsed time per iteration (ms): 7553.3 | learning rate: 1.494E-05 | global batch size:   512 | lm loss: 1.361546E-01 | loss scale: 32768.0 | grad norm: 3.169 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2087.29 | backward-compute: 5313.43 | backward-params-all-reduce: 56.67 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.36 | optimizer-unscale-and-check-inf: 11.76 | optimizer-clip-main-grad: 18.73 | optimizer-copy-main-to-model-params: 11.78 | optimizer: 90.16 | batch-generator: 6.47
+ iteration       45/    1000 | consumed samples:        23040 | elapsed time per iteration (ms): 7557.2 | learning rate: 1.493E-05 | global batch size:   512 | lm loss: 1.464474E-01 | loss scale: 32768.0 | grad norm: 3.711 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2092.89 | backward-compute: 5311.82 | backward-params-all-reduce: 56.45 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.37 | optimizer-unscale-and-check-inf: 11.78 | optimizer-clip-main-grad: 18.75 | optimizer-copy-main-to-model-params: 11.75 | optimizer: 90.22 | batch-generator: 6.47
+ iteration       46/    1000 | consumed samples:        23552 | elapsed time per iteration (ms): 7557.0 | learning rate: 1.492E-05 | global batch size:   512 | lm loss: 1.820094E-01 | loss scale: 32768.0 | grad norm: 4.885 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2095.05 | backward-compute: 5309.66 | backward-params-all-reduce: 56.29 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.34 | optimizer-unscale-and-check-inf: 11.75 | optimizer-clip-main-grad: 18.76 | optimizer-copy-main-to-model-params: 11.77 | optimizer: 90.19 | batch-generator: 6.50
+ iteration       47/    1000 | consumed samples:        24064 | elapsed time per iteration (ms): 7556.7 | learning rate: 1.492E-05 | global batch size:   512 | lm loss: 1.463280E-01 | loss scale: 32768.0 | grad norm: 3.587 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2088.74 | backward-compute: 5315.99 | backward-params-all-reduce: 55.99 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.37 | optimizer-unscale-and-check-inf: 11.74 | optimizer-clip-main-grad: 18.80 | optimizer-copy-main-to-model-params: 11.77 | optimizer: 90.28 | batch-generator: 6.58
+ iteration       48/    1000 | consumed samples:        24576 | elapsed time per iteration (ms): 7551.5 | learning rate: 1.491E-05 | global batch size:   512 | lm loss: 1.199867E-01 | loss scale: 32768.0 | grad norm: 1.324 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2090.07 | backward-compute: 5309.75 | backward-params-all-reduce: 55.77 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.33 | optimizer-unscale-and-check-inf: 11.68 | optimizer-clip-main-grad: 18.77 | optimizer-copy-main-to-model-params: 11.82 | optimizer: 90.22 | batch-generator: 6.45
+ iteration       49/    1000 | consumed samples:        25088 | elapsed time per iteration (ms): 7547.8 | learning rate: 1.491E-05 | global batch size:   512 | lm loss: 1.279696E-01 | loss scale: 32768.0 | grad norm: 2.318 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2084.35 | backward-compute: 5312.32 | backward-params-all-reduce: 55.08 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.35 | optimizer-unscale-and-check-inf: 11.75 | optimizer-clip-main-grad: 18.76 | optimizer-copy-main-to-model-params: 11.77 | optimizer: 90.19 | batch-generator: 7.02
+ iteration       50/    1000 | consumed samples:        25600 | elapsed time per iteration (ms): 7528.7 | learning rate: 1.490E-05 | global batch size:   512 | lm loss: 1.159116E-01 | loss scale: 32768.0 | grad norm: 0.237 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2080.57 | backward-compute: 5305.69 | backward-params-all-reduce: 56.58 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.36 | optimizer-unscale-and-check-inf: 11.76 | optimizer-clip-main-grad: 8.72 | optimizer-copy-main-to-model-params: 11.76 | optimizer: 80.12 | batch-generator: 6.81
+ iteration       51/    1000 | consumed samples:        26112 | elapsed time per iteration (ms): 7549.3 | learning rate: 1.489E-05 | global batch size:   512 | lm loss: 1.278709E-01 | loss scale: 32768.0 | grad norm: 2.269 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2091.66 | backward-compute: 5306.77 | backward-params-all-reduce: 55.11 | backward-embedding-all-reduce: 0.03 | optimizer-copy-to-main-grad: 11.33 | optimizer-unscale-and-check-inf: 11.71 | optimizer-clip-main-grad: 18.71 | optimizer-copy-main-to-model-params: 11.78 | optimizer: 90.08 | batch-generator: 6.66
+ iteration       52/    1000 | consumed samples:        26624 | elapsed time per iteration (ms): 7545.6 | learning rate: 1.488E-05 | global batch size:   512 | lm loss: 1.216975E-01 | loss scale: 32768.0 | grad norm: 1.601 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2087.94 | backward-compute: 5307.62 | backward-params-all-reduce: 54.22 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.35 | optimizer-unscale-and-check-inf: 11.72 | optimizer-clip-main-grad: 18.77 | optimizer-copy-main-to-model-params: 11.78 | optimizer: 90.09 | batch-generator: 6.51
+ iteration       53/    1000 | consumed samples:        27136 | elapsed time per iteration (ms): 7547.9 | learning rate: 1.488E-05 | global batch size:   512 | lm loss: 1.221811E-01 | loss scale: 32768.0 | grad norm: 1.656 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2089.63 | backward-compute: 5308.10 | backward-params-all-reduce: 54.37 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.32 | optimizer-unscale-and-check-inf: 11.73 | optimizer-clip-main-grad: 18.74 | optimizer-copy-main-to-model-params: 11.76 | optimizer: 90.13 | batch-generator: 6.56
+ iteration       54/    1000 | consumed samples:        27648 | elapsed time per iteration (ms): 7552.3 | learning rate: 1.487E-05 | global batch size:   512 | lm loss: 1.241017E-01 | loss scale: 32768.0 | grad norm: 1.863 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2093.74 | backward-compute: 5306.56 | backward-params-all-reduce: 55.85 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.37 | optimizer-unscale-and-check-inf: 11.79 | optimizer-clip-main-grad: 18.77 | optimizer-copy-main-to-model-params: 11.75 | optimizer: 90.28 | batch-generator: 6.50
+ iteration       55/    1000 | consumed samples:        28160 | elapsed time per iteration (ms): 7536.3 | learning rate: 1.486E-05 | global batch size:   512 | lm loss: 1.161504E-01 | loss scale: 32768.0 | grad norm: 0.395 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2090.20 | backward-compute: 5304.55 | backward-params-all-reduce: 55.35 | backward-embedding-all-reduce: 0.03 | optimizer-copy-to-main-grad: 11.29 | optimizer-unscale-and-check-inf: 11.94 | optimizer-clip-main-grad: 8.86 | optimizer-copy-main-to-model-params: 11.85 | optimizer: 80.56 | batch-generator: 6.49
+ iteration       56/    1000 | consumed samples:        28672 | elapsed time per iteration (ms): 7547.7 | learning rate: 1.485E-05 | global batch size:   512 | lm loss: 1.206944E-01 | loss scale: 32768.0 | grad norm: 1.427 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2086.34 | backward-compute: 5309.92 | backward-params-all-reduce: 55.60 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.37 | optimizer-unscale-and-check-inf: 11.70 | optimizer-clip-main-grad: 18.73 | optimizer-copy-main-to-model-params: 11.75 | optimizer: 90.12 | batch-generator: 6.51
+ iteration       57/    1000 | consumed samples:        29184 | elapsed time per iteration (ms): 7534.2 | learning rate: 1.484E-05 | global batch size:   512 | lm loss: 1.158617E-01 | loss scale: 32768.0 | grad norm: 0.041 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2087.90 | backward-compute: 5305.65 | backward-params-all-reduce: 54.80 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.34 | optimizer-unscale-and-check-inf: 11.77 | optimizer-clip-main-grad: 8.72 | optimizer-copy-main-to-model-params: 11.78 | optimizer: 80.09 | batch-generator: 6.52
+ iteration       58/    1000 | consumed samples:        29696 | elapsed time per iteration (ms): 7551.5 | learning rate: 1.484E-05 | global batch size:   512 | lm loss: 1.198208E-01 | loss scale: 32768.0 | grad norm: 1.287 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2091.52 | backward-compute: 5305.35 | backward-params-all-reduce: 57.47 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.35 | optimizer-unscale-and-check-inf: 11.76 | optimizer-clip-main-grad: 18.77 | optimizer-copy-main-to-model-params: 11.75 | optimizer: 90.21 | batch-generator: 6.52
+ iteration       59/    1000 | consumed samples:        30208 | elapsed time per iteration (ms): 7530.3 | learning rate: 1.483E-05 | global batch size:   512 | lm loss: 1.158271E-01 | loss scale: 32768.0 | grad norm: 0.055 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2084.61 | backward-compute: 5303.31 | backward-params-all-reduce: 56.47 | backward-embedding-all-reduce: 0.03 | optimizer-copy-to-main-grad: 11.31 | optimizer-unscale-and-check-inf: 11.77 | optimizer-clip-main-grad: 8.74 | optimizer-copy-main-to-model-params: 11.76 | optimizer: 80.17 | batch-generator: 6.59
+ iteration       60/    1000 | consumed samples:        30720 | elapsed time per iteration (ms): 7554.1 | learning rate: 1.482E-05 | global batch size:   512 | lm loss: 1.185992E-01 | loss scale: 32768.0 | grad norm: 1.096 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2094.18 | backward-compute: 5307.26 | backward-params-all-reduce: 56.82 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.30 | optimizer-unscale-and-check-inf: 11.76 | optimizer-clip-main-grad: 18.71 | optimizer-copy-main-to-model-params: 11.77 | optimizer: 90.07 | batch-generator: 6.66
+ iteration       61/    1000 | consumed samples:        31232 | elapsed time per iteration (ms): 7538.3 | learning rate: 1.481E-05 | global batch size:   512 | lm loss: 1.157667E-01 | loss scale: 32768.0 | grad norm: 0.037 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2090.29 | backward-compute: 5306.43 | backward-params-all-reduce: 55.66 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.34 | optimizer-unscale-and-check-inf: 11.78 | optimizer-clip-main-grad: 8.68 | optimizer-copy-main-to-model-params: 11.76 | optimizer: 80.18 | batch-generator: 6.81
+ iteration       62/    1000 | consumed samples:        31744 | elapsed time per iteration (ms): 7555.4 | learning rate: 1.480E-05 | global batch size:   512 | lm loss: 1.182767E-01 | loss scale: 32768.0 | grad norm: 1.040 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2097.70 | backward-compute: 5306.04 | backward-params-all-reduce: 55.63 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.35 | optimizer-unscale-and-check-inf: 11.78 | optimizer-clip-main-grad: 18.83 | optimizer-copy-main-to-model-params: 11.77 | optimizer: 90.28 | batch-generator: 6.62
+ iteration       63/    1000 | consumed samples:        32256 | elapsed time per iteration (ms): 7533.3 | learning rate: 1.479E-05 | global batch size:   512 | lm loss: 1.159573E-01 | loss scale: 32768.0 | grad norm: 0.316 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2086.19 | backward-compute: 5303.41 | backward-params-all-reduce: 58.03 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.34 | optimizer-unscale-and-check-inf: 11.77 | optimizer-clip-main-grad: 8.65 | optimizer-copy-main-to-model-params: 11.78 | optimizer: 80.00 | batch-generator: 6.63
+ iteration       64/    1000 | consumed samples:        32768 | elapsed time per iteration (ms): 7542.5 | learning rate: 1.478E-05 | global batch size:   512 | lm loss: 1.171953E-01 | loss scale: 32768.0 | grad norm: 0.794 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2096.71 | backward-compute: 5304.46 | backward-params-all-reduce: 54.98 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.35 | optimizer-unscale-and-check-inf: 11.78 | optimizer-clip-main-grad: 8.73 | optimizer-copy-main-to-model-params: 11.78 | optimizer: 80.25 | batch-generator: 6.59
+ iteration       65/    1000 | consumed samples:        33280 | elapsed time per iteration (ms): 7537.6 | learning rate: 1.477E-05 | global batch size:   512 | lm loss: 1.161883E-01 | loss scale: 32768.0 | grad norm: 0.407 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2089.37 | backward-compute: 5305.89 | backward-params-all-reduce: 56.53 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.36 | optimizer-unscale-and-check-inf: 11.74 | optimizer-clip-main-grad: 8.66 | optimizer-copy-main-to-model-params: 11.78 | optimizer: 80.04 | batch-generator: 6.37
+ iteration       66/    1000 | consumed samples:        33792 | elapsed time per iteration (ms): 7531.3 | learning rate: 1.476E-05 | global batch size:   512 | lm loss: 1.168449E-01 | loss scale: 32768.0 | grad norm: 0.733 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2087.33 | backward-compute: 5303.23 | backward-params-all-reduce: 54.92 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.32 | optimizer-unscale-and-check-inf: 11.77 | optimizer-clip-main-grad: 8.66 | optimizer-copy-main-to-model-params: 11.77 | optimizer: 80.01 | batch-generator: 6.43
+ iteration       67/    1000 | consumed samples:        34304 | elapsed time per iteration (ms): 7536.4 | learning rate: 1.475E-05 | global batch size:   512 | lm loss: 1.166795E-01 | loss scale: 32768.0 | grad norm: 0.634 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2090.36 | backward-compute: 5305.98 | backward-params-all-reduce: 54.43 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.29 | optimizer-unscale-and-check-inf: 11.71 | optimizer-clip-main-grad: 8.69 | optimizer-copy-main-to-model-params: 11.78 | optimizer: 79.93 | batch-generator: 6.44
+ iteration       68/    1000 | consumed samples:        34816 | elapsed time per iteration (ms): 7532.2 | learning rate: 1.474E-05 | global batch size:   512 | lm loss: 1.160838E-01 | loss scale: 32768.0 | grad norm: 0.458 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2084.32 | backward-compute: 5306.77 | backward-params-all-reduce: 55.20 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.34 | optimizer-unscale-and-check-inf: 11.76 | optimizer-clip-main-grad: 8.72 | optimizer-copy-main-to-model-params: 11.79 | optimizer: 80.13 | batch-generator: 6.50
+ iteration       69/    1000 | consumed samples:        35328 | elapsed time per iteration (ms): 7536.1 | learning rate: 1.472E-05 | global batch size:   512 | lm loss: 1.165586E-01 | loss scale: 32768.0 | grad norm: 0.670 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2091.29 | backward-compute: 5305.55 | backward-params-all-reduce: 53.65 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.33 | optimizer-unscale-and-check-inf: 11.71 | optimizer-clip-main-grad: 8.66 | optimizer-copy-main-to-model-params: 11.75 | optimizer: 79.95 | batch-generator: 6.54
+ iteration       70/    1000 | consumed samples:        35840 | elapsed time per iteration (ms): 7533.8 | learning rate: 1.471E-05 | global batch size:   512 | lm loss: 1.157153E-01 | loss scale: 32768.0 | grad norm: 0.201 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2089.11 | backward-compute: 5302.93 | backward-params-all-reduce: 55.80 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.29 | optimizer-unscale-and-check-inf: 11.75 | optimizer-clip-main-grad: 8.67 | optimizer-copy-main-to-model-params: 11.79 | optimizer: 80.18 | batch-generator: 6.55
+ iteration       71/    1000 | consumed samples:        36352 | elapsed time per iteration (ms): 7530.4 | learning rate: 1.470E-05 | global batch size:   512 | lm loss: 1.165991E-01 | loss scale: 32768.0 | grad norm: 0.604 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2085.37 | backward-compute: 5304.28 | backward-params-all-reduce: 54.92 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.35 | optimizer-unscale-and-check-inf: 11.78 | optimizer-clip-main-grad: 8.65 | optimizer-copy-main-to-model-params: 11.76 | optimizer: 80.09 | batch-generator: 6.47
+ iteration       72/    1000 | consumed samples:        36864 | elapsed time per iteration (ms): 7528.8 | learning rate: 1.469E-05 | global batch size:   512 | lm loss: 1.156262E-01 | loss scale: 32768.0 | grad norm: 0.065 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2086.47 | backward-compute: 5302.28 | backward-params-all-reduce: 54.25 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.33 | optimizer-unscale-and-check-inf: 11.70 | optimizer-clip-main-grad: 8.63 | optimizer-copy-main-to-model-params: 11.78 | optimizer: 80.05 | batch-generator: 6.63
+ iteration       73/    1000 | consumed samples:        37376 | elapsed time per iteration (ms): 7528.2 | learning rate: 1.468E-05 | global batch size:   512 | lm loss: 1.164094E-01 | loss scale: 32768.0 | grad norm: 0.557 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2084.95 | backward-compute: 5302.74 | backward-params-all-reduce: 54.38 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.29 | optimizer-unscale-and-check-inf: 11.71 | optimizer-clip-main-grad: 8.73 | optimizer-copy-main-to-model-params: 11.77 | optimizer: 80.07 | batch-generator: 6.43
+ iteration       74/    1000 | consumed samples:        37888 | elapsed time per iteration (ms): 7534.7 | learning rate: 1.467E-05 | global batch size:   512 | lm loss: 1.155668E-01 | loss scale: 32768.0 | grad norm: 0.030 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2086.89 | backward-compute: 5304.83 | backward-params-all-reduce: 55.11 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.34 | optimizer-unscale-and-check-inf: 11.75 | optimizer-clip-main-grad: 8.59 | optimizer-copy-main-to-model-params: 11.76 | optimizer: 79.89 | batch-generator: 6.45
+ iteration       75/    1000 | consumed samples:        38400 | elapsed time per iteration (ms): 7535.8 | learning rate: 1.465E-05 | global batch size:   512 | lm loss: 1.163297E-01 | loss scale: 32768.0 | grad norm: 0.524 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2092.88 | backward-compute: 5303.09 | backward-params-all-reduce: 53.80 | backward-embedding-all-reduce: 0.03 | optimizer-copy-to-main-grad: 11.29 | optimizer-unscale-and-check-inf: 11.77 | optimizer-clip-main-grad: 8.65 | optimizer-copy-main-to-model-params: 11.78 | optimizer: 80.07 | batch-generator: 6.68
+ iteration       76/    1000 | consumed samples:        38912 | elapsed time per iteration (ms): 7529.2 | learning rate: 1.464E-05 | global batch size:   512 | lm loss: 1.156351E-01 | loss scale: 32768.0 | grad norm: 0.140 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2085.28 | backward-compute: 5301.57 | backward-params-all-reduce: 56.67 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.31 | optimizer-unscale-and-check-inf: 11.72 | optimizer-clip-main-grad: 8.67 | optimizer-copy-main-to-model-params: 11.75 | optimizer: 79.91 | batch-generator: 6.52
+ iteration       77/    1000 | consumed samples:        39424 | elapsed time per iteration (ms): 7535.7 | learning rate: 1.463E-05 | global batch size:   512 | lm loss: 1.160355E-01 | loss scale: 32768.0 | grad norm: 0.469 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2091.19 | backward-compute: 5301.46 | backward-params-all-reduce: 57.30 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.37 | optimizer-unscale-and-check-inf: 11.70 | optimizer-clip-main-grad: 8.64 | optimizer-copy-main-to-model-params: 11.80 | optimizer: 80.02 | batch-generator: 6.50
+ iteration       78/    1000 | consumed samples:        39936 | elapsed time per iteration (ms): 7535.7 | learning rate: 1.461E-05 | global batch size:   512 | lm loss: 1.158357E-01 | loss scale: 32768.0 | grad norm: 0.279 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2087.78 | backward-compute: 5305.25 | backward-params-all-reduce: 56.75 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.34 | optimizer-unscale-and-check-inf: 11.74 | optimizer-clip-main-grad: 8.68 | optimizer-copy-main-to-model-params: 11.76 | optimizer: 80.10 | batch-generator: 6.48
+ iteration       79/    1000 | consumed samples:        40448 | elapsed time per iteration (ms): 7530.5 | learning rate: 1.460E-05 | global batch size:   512 | lm loss: 1.158392E-01 | loss scale: 32768.0 | grad norm: 0.322 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2088.73 | backward-compute: 5301.73 | backward-params-all-reduce: 54.13 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.37 | optimizer-unscale-and-check-inf: 11.77 | optimizer-clip-main-grad: 8.67 | optimizer-copy-main-to-model-params: 11.79 | optimizer: 80.15 | batch-generator: 6.44
+ iteration       80/    1000 | consumed samples:        40960 | elapsed time per iteration (ms): 7528.6 | learning rate: 1.459E-05 | global batch size:   512 | lm loss: 1.158393E-01 | loss scale: 32768.0 | grad norm: 0.310 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2085.71 | backward-compute: 5301.73 | backward-params-all-reduce: 55.16 | backward-embedding-all-reduce: 0.03 | optimizer-copy-to-main-grad: 11.32 | optimizer-unscale-and-check-inf: 11.75 | optimizer-clip-main-grad: 8.66 | optimizer-copy-main-to-model-params: 11.80 | optimizer: 80.10 | batch-generator: 6.41
+ iteration       81/    1000 | consumed samples:        41472 | elapsed time per iteration (ms): 7530.8 | learning rate: 1.457E-05 | global batch size:   512 | lm loss: 1.157998E-01 | loss scale: 32768.0 | grad norm: 0.190 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2084.77 | backward-compute: 5304.92 | backward-params-all-reduce: 55.29 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.32 | optimizer-unscale-and-check-inf: 11.72 | optimizer-clip-main-grad: 8.65 | optimizer-copy-main-to-model-params: 11.81 | optimizer: 80.07 | batch-generator: 6.59
+ iteration       82/    1000 | consumed samples:        41984 | elapsed time per iteration (ms): 7534.5 | learning rate: 1.456E-05 | global batch size:   512 | lm loss: 1.156501E-01 | loss scale: 32768.0 | grad norm: 0.233 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2091.08 | backward-compute: 5302.57 | backward-params-all-reduce: 55.09 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.34 | optimizer-unscale-and-check-inf: 11.76 | optimizer-clip-main-grad: 8.66 | optimizer-copy-main-to-model-params: 11.79 | optimizer: 80.08 | batch-generator: 6.51
+ iteration       83/    1000 | consumed samples:        42496 | elapsed time per iteration (ms): 7530.8 | learning rate: 1.455E-05 | global batch size:   512 | lm loss: 1.156263E-01 | loss scale: 32768.0 | grad norm: 0.192 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2080.00 | backward-compute: 5309.36 | backward-params-all-reduce: 55.67 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.29 | optimizer-unscale-and-check-inf: 11.76 | optimizer-clip-main-grad: 8.64 | optimizer-copy-main-to-model-params: 11.77 | optimizer: 79.99 | batch-generator: 6.40
+ iteration       84/    1000 | consumed samples:        43008 | elapsed time per iteration (ms): 7534.4 | learning rate: 1.453E-05 | global batch size:   512 | lm loss: 1.157207E-01 | loss scale: 32768.0 | grad norm: 0.263 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2087.46 | backward-compute: 5305.26 | backward-params-all-reduce: 56.01 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.36 | optimizer-unscale-and-check-inf: 11.73 | optimizer-clip-main-grad: 8.64 | optimizer-copy-main-to-model-params: 11.76 | optimizer: 79.99 | batch-generator: 6.43
+ iteration       85/    1000 | consumed samples:        43520 | elapsed time per iteration (ms): 7529.7 | learning rate: 1.452E-05 | global batch size:   512 | lm loss: 1.156089E-01 | loss scale: 32768.0 | grad norm: 0.111 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2080.80 | backward-compute: 5307.95 | backward-params-all-reduce: 55.16 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.28 | optimizer-unscale-and-check-inf: 11.74 | optimizer-clip-main-grad: 8.64 | optimizer-copy-main-to-model-params: 11.75 | optimizer: 79.98 | batch-generator: 6.66
+ iteration       86/    1000 | consumed samples:        44032 | elapsed time per iteration (ms): 7536.2 | learning rate: 1.450E-05 | global batch size:   512 | lm loss: 1.156789E-01 | loss scale: 32768.0 | grad norm: 0.245 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2090.02 | backward-compute: 5303.39 | backward-params-all-reduce: 56.94 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.35 | optimizer-unscale-and-check-inf: 11.76 | optimizer-clip-main-grad: 8.64 | optimizer-copy-main-to-model-params: 11.79 | optimizer: 80.10 | batch-generator: 6.52
+ iteration       87/    1000 | consumed samples:        44544 | elapsed time per iteration (ms): 7530.4 | learning rate: 1.449E-05 | global batch size:   512 | lm loss: 1.156260E-01 | loss scale: 32768.0 | grad norm: 0.071 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2084.55 | backward-compute: 5303.45 | backward-params-all-reduce: 56.72 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.32 | optimizer-unscale-and-check-inf: 11.75 | optimizer-clip-main-grad: 8.70 | optimizer-copy-main-to-model-params: 11.77 | optimizer: 80.02 | batch-generator: 6.41
+ iteration       88/    1000 | consumed samples:        45056 | elapsed time per iteration (ms): 7528.5 | learning rate: 1.447E-05 | global batch size:   512 | lm loss: 1.156627E-01 | loss scale: 32768.0 | grad norm: 0.297 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2085.83 | backward-compute: 5302.34 | backward-params-all-reduce: 54.35 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.33 | optimizer-unscale-and-check-inf: 11.72 | optimizer-clip-main-grad: 8.71 | optimizer-copy-main-to-model-params: 11.80 | optimizer: 80.06 | batch-generator: 6.93
+ iteration       89/    1000 | consumed samples:        45568 | elapsed time per iteration (ms): 7518.7 | learning rate: 1.446E-05 | global batch size:   512 | lm loss: 1.155405E-01 | loss scale: 32768.0 | grad norm: 0.068 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2077.23 | backward-compute: 5302.95 | backward-params-all-reduce: 52.74 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.29 | optimizer-unscale-and-check-inf: 11.73 | optimizer-clip-main-grad: 8.68 | optimizer-copy-main-to-model-params: 11.75 | optimizer: 80.02 | batch-generator: 6.82
+ iteration       90/    1000 | consumed samples:        46080 | elapsed time per iteration (ms): 7516.2 | learning rate: 1.444E-05 | global batch size:   512 | lm loss: 1.157327E-01 | loss scale: 32768.0 | grad norm: 0.249 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2077.96 | backward-compute: 5299.59 | backward-params-all-reduce: 52.64 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.35 | optimizer-unscale-and-check-inf: 11.75 | optimizer-clip-main-grad: 8.72 | optimizer-copy-main-to-model-params: 11.78 | optimizer: 80.20 | batch-generator: 6.98
+ iteration       91/    1000 | consumed samples:        46592 | elapsed time per iteration (ms): 7507.2 | learning rate: 1.442E-05 | global batch size:   512 | lm loss: 1.155345E-01 | loss scale: 32768.0 | grad norm: 0.170 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2065.39 | backward-compute: 5302.98 | backward-params-all-reduce: 53.02 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.32 | optimizer-unscale-and-check-inf: 11.75 | optimizer-clip-main-grad: 8.67 | optimizer-copy-main-to-model-params: 11.81 | optimizer: 80.08 | batch-generator: 6.72
+ iteration       92/    1000 | consumed samples:        47104 | elapsed time per iteration (ms): 7493.6 | learning rate: 1.441E-05 | global batch size:   512 | lm loss: 1.155725E-01 | loss scale: 32768.0 | grad norm: 0.146 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2058.60 | backward-compute: 5296.80 | backward-params-all-reduce: 52.29 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.36 | optimizer-unscale-and-check-inf: 11.72 | optimizer-clip-main-grad: 8.72 | optimizer-copy-main-to-model-params: 11.78 | optimizer: 80.10 | batch-generator: 6.54
+ iteration       93/    1000 | consumed samples:        47616 | elapsed time per iteration (ms): 7495.4 | learning rate: 1.439E-05 | global batch size:   512 | lm loss: 1.157123E-01 | loss scale: 32768.0 | grad norm: 0.219 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2072.93 | backward-compute: 5280.23 | backward-params-all-reduce: 56.27 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.27 | optimizer-unscale-and-check-inf: 11.75 | optimizer-clip-main-grad: 8.63 | optimizer-copy-main-to-model-params: 11.80 | optimizer: 80.09 | batch-generator: 6.47
+ iteration       94/    1000 | consumed samples:        48128 | elapsed time per iteration (ms): 7491.0 | learning rate: 1.438E-05 | global batch size:   512 | lm loss: 1.155774E-01 | loss scale: 32768.0 | grad norm: 0.042 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2062.00 | backward-compute: 5287.69 | backward-params-all-reduce: 55.52 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.31 | optimizer-unscale-and-check-inf: 11.72 | optimizer-clip-main-grad: 8.64 | optimizer-copy-main-to-model-params: 11.79 | optimizer: 80.03 | batch-generator: 6.50
+ iteration       95/    1000 | consumed samples:        48640 | elapsed time per iteration (ms): 7512.9 | learning rate: 1.436E-05 | global batch size:   512 | lm loss: 1.156194E-01 | loss scale: 32768.0 | grad norm: 0.255 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2059.11 | backward-compute: 5289.38 | backward-params-all-reduce: 78.56 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.28 | optimizer-unscale-and-check-inf: 11.75 | optimizer-clip-main-grad: 8.67 | optimizer-copy-main-to-model-params: 11.88 | optimizer: 80.13 | batch-generator: 6.45
+ iteration       96/    1000 | consumed samples:        49152 | elapsed time per iteration (ms): 7491.2 | learning rate: 1.434E-05 | global batch size:   512 | lm loss: 1.154942E-01 | loss scale: 32768.0 | grad norm: 0.100 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2057.66 | backward-compute: 5292.03 | backward-params-all-reduce: 55.50 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.28 | optimizer-unscale-and-check-inf: 11.73 | optimizer-clip-main-grad: 8.68 | optimizer-copy-main-to-model-params: 11.75 | optimizer: 79.96 | batch-generator: 6.71
+ iteration       97/    1000 | consumed samples:        49664 | elapsed time per iteration (ms): 7492.3 | learning rate: 1.433E-05 | global batch size:   512 | lm loss: 1.155317E-01 | loss scale: 32768.0 | grad norm: 0.176 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2069.46 | backward-compute: 5285.03 | backward-params-all-reduce: 51.99 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.36 | optimizer-unscale-and-check-inf: 11.76 | optimizer-clip-main-grad: 8.67 | optimizer-copy-main-to-model-params: 11.75 | optimizer: 80.16 | batch-generator: 6.42
+ iteration       98/    1000 | consumed samples:        50176 | elapsed time per iteration (ms): 7490.7 | learning rate: 1.431E-05 | global batch size:   512 | lm loss: 1.155484E-01 | loss scale: 32768.0 | grad norm: 0.134 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2062.83 | backward-compute: 5290.28 | backward-params-all-reduce: 51.93 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.27 | optimizer-unscale-and-check-inf: 11.74 | optimizer-clip-main-grad: 8.66 | optimizer-copy-main-to-model-params: 11.77 | optimizer: 79.88 | batch-generator: 6.36
+ iteration       99/    1000 | consumed samples:        50688 | elapsed time per iteration (ms): 7490.4 | learning rate: 1.429E-05 | global batch size:   512 | lm loss: 1.155005E-01 | loss scale: 32768.0 | grad norm: 0.136 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2065.87 | backward-compute: 5282.58 | backward-params-all-reduce: 56.17 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.26 | optimizer-unscale-and-check-inf: 11.78 | optimizer-clip-main-grad: 8.65 | optimizer-copy-main-to-model-params: 11.77 | optimizer: 80.06 | batch-generator: 6.50
+ iteration      100/    1000 | consumed samples:        51200 | elapsed time per iteration (ms): 7493.1 | learning rate: 1.427E-05 | global batch size:   512 | lm loss: 1.156280E-01 | loss scale: 32768.0 | grad norm: 0.200 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2058.84 | backward-compute: 5293.63 | backward-params-all-reduce: 54.90 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.32 | optimizer-unscale-and-check-inf: 11.71 | optimizer-clip-main-grad: 8.61 | optimizer-copy-main-to-model-params: 11.74 | optimizer: 79.91 | batch-generator: 6.44
+ iteration      101/    1000 | consumed samples:        51712 | elapsed time per iteration (ms): 7494.2 | learning rate: 1.426E-05 | global batch size:   512 | lm loss: 1.155244E-01 | loss scale: 32768.0 | grad norm: 0.047 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2062.96 | backward-compute: 5292.50 | backward-params-all-reduce: 53.00 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.29 | optimizer-unscale-and-check-inf: 11.75 | optimizer-clip-main-grad: 8.71 | optimizer-copy-main-to-model-params: 11.78 | optimizer: 80.03 | batch-generator: 7.04
+ iteration      102/    1000 | consumed samples:        52224 | elapsed time per iteration (ms): 7491.4 | learning rate: 1.424E-05 | global batch size:   512 | lm loss: 1.157015E-01 | loss scale: 32768.0 | grad norm: 0.205 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2064.87 | backward-compute: 5285.24 | backward-params-all-reduce: 55.51 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.29 | optimizer-unscale-and-check-inf: 11.76 | optimizer-clip-main-grad: 8.71 | optimizer-copy-main-to-model-params: 11.81 | optimizer: 80.16 | batch-generator: 6.54
+ iteration      103/    1000 | consumed samples:        52736 | elapsed time per iteration (ms): 7488.3 | learning rate: 1.422E-05 | global batch size:   512 | lm loss: 1.153166E-01 | loss scale: 32768.0 | grad norm: 0.029 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2060.07 | backward-compute: 5287.32 | backward-params-all-reduce: 55.18 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.28 | optimizer-unscale-and-check-inf: 11.73 | optimizer-clip-main-grad: 8.64 | optimizer-copy-main-to-model-params: 11.79 | optimizer: 79.92 | batch-generator: 6.88
+ iteration      104/    1000 | consumed samples:        53248 | elapsed time per iteration (ms): 7522.2 | learning rate: 1.420E-05 | global batch size:   512 | lm loss: 1.157773E-01 | loss scale: 32768.0 | grad norm: 0.317 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2101.18 | backward-compute: 5281.63 | backward-params-all-reduce: 53.65 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.26 | optimizer-unscale-and-check-inf: 11.74 | optimizer-clip-main-grad: 8.73 | optimizer-copy-main-to-model-params: 11.77 | optimizer: 79.92 | batch-generator: 6.90
+ iteration      105/    1000 | consumed samples:        53760 | elapsed time per iteration (ms): 7502.2 | learning rate: 1.419E-05 | global batch size:   512 | lm loss: 1.155680E-01 | loss scale: 32768.0 | grad norm: 0.181 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2068.38 | backward-compute: 5294.58 | backward-params-all-reduce: 53.30 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.34 | optimizer-unscale-and-check-inf: 11.78 | optimizer-clip-main-grad: 8.65 | optimizer-copy-main-to-model-params: 11.79 | optimizer: 80.15 | batch-generator: 6.42
+ iteration      106/    1000 | consumed samples:        54272 | elapsed time per iteration (ms): 7502.7 | learning rate: 1.417E-05 | global batch size:   512 | lm loss: 1.156348E-01 | loss scale: 32768.0 | grad norm: 0.179 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2065.38 | backward-compute: 5297.29 | backward-params-all-reduce: 54.24 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.34 | optimizer-unscale-and-check-inf: 11.75 | optimizer-clip-main-grad: 8.68 | optimizer-copy-main-to-model-params: 11.76 | optimizer: 80.01 | batch-generator: 6.48
+ iteration      107/    1000 | consumed samples:        54784 | elapsed time per iteration (ms): 7532.2 | learning rate: 1.415E-05 | global batch size:   512 | lm loss: 1.155730E-01 | loss scale: 32768.0 | grad norm: 0.214 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2093.04 | backward-compute: 5297.63 | backward-params-all-reduce: 55.59 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.35 | optimizer-unscale-and-check-inf: 11.74 | optimizer-clip-main-grad: 8.68 | optimizer-copy-main-to-model-params: 11.75 | optimizer: 80.00 | batch-generator: 7.36
+ iteration      108/    1000 | consumed samples:        55296 | elapsed time per iteration (ms): 7504.6 | learning rate: 1.413E-05 | global batch size:   512 | lm loss: 1.156528E-01 | loss scale: 32768.0 | grad norm: 0.114 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2071.37 | backward-compute: 5293.44 | backward-params-all-reduce: 54.11 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.32 | optimizer-unscale-and-check-inf: 11.72 | optimizer-clip-main-grad: 8.67 | optimizer-copy-main-to-model-params: 11.76 | optimizer: 79.94 | batch-generator: 6.45
+ iteration      109/    1000 | consumed samples:        55808 | elapsed time per iteration (ms): 7505.3 | learning rate: 1.411E-05 | global batch size:   512 | lm loss: 1.158417E-01 | loss scale: 32768.0 | grad norm: 0.268 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2072.70 | backward-compute: 5291.03 | backward-params-all-reduce: 55.73 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.28 | optimizer-unscale-and-check-inf: 11.77 | optimizer-clip-main-grad: 8.69 | optimizer-copy-main-to-model-params: 11.75 | optimizer: 80.07 | batch-generator: 6.54
+ iteration      110/    1000 | consumed samples:        56320 | elapsed time per iteration (ms): 7506.7 | learning rate: 1.409E-05 | global batch size:   512 | lm loss: 1.153790E-01 | loss scale: 32768.0 | grad norm: 0.053 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2071.57 | backward-compute: 5295.85 | backward-params-all-reduce: 53.73 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.26 | optimizer-unscale-and-check-inf: 11.71 | optimizer-clip-main-grad: 8.65 | optimizer-copy-main-to-model-params: 11.75 | optimizer: 79.81 | batch-generator: 6.36
+ iteration      111/    1000 | consumed samples:        56832 | elapsed time per iteration (ms): 7508.9 | learning rate: 1.407E-05 | global batch size:   512 | lm loss: 1.158434E-01 | loss scale: 32768.0 | grad norm: 0.362 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2078.16 | backward-compute: 5292.45 | backward-params-all-reduce: 52.57 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.38 | optimizer-unscale-and-check-inf: 11.76 | optimizer-clip-main-grad: 8.64 | optimizer-copy-main-to-model-params: 11.78 | optimizer: 80.05 | batch-generator: 6.65
+ iteration      112/    1000 | consumed samples:        57344 | elapsed time per iteration (ms): 7511.9 | learning rate: 1.405E-05 | global batch size:   512 | lm loss: 1.156195E-01 | loss scale: 32768.0 | grad norm: 0.156 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2069.55 | backward-compute: 5303.15 | backward-params-all-reduce: 53.26 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.33 | optimizer-unscale-and-check-inf: 11.74 | optimizer-clip-main-grad: 8.76 | optimizer-copy-main-to-model-params: 11.83 | optimizer: 80.26 | batch-generator: 6.75
+ iteration      113/    1000 | consumed samples:        57856 | elapsed time per iteration (ms): 7522.6 | learning rate: 1.403E-05 | global batch size:   512 | lm loss: 1.156654E-01 | loss scale: 32768.0 | grad norm: 0.279 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2083.24 | backward-compute: 5299.71 | backward-params-all-reduce: 53.99 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.35 | optimizer-unscale-and-check-inf: 11.72 | optimizer-clip-main-grad: 8.67 | optimizer-copy-main-to-model-params: 11.78 | optimizer: 79.90 | batch-generator: 6.46
+ iteration      114/    1000 | consumed samples:        58368 | elapsed time per iteration (ms): 7518.9 | learning rate: 1.401E-05 | global batch size:   512 | lm loss: 1.155919E-01 | loss scale: 32768.0 | grad norm: 0.291 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2077.73 | backward-compute: 5302.24 | backward-params-all-reduce: 53.15 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.32 | optimizer-unscale-and-check-inf: 11.71 | optimizer-clip-main-grad: 8.72 | optimizer-copy-main-to-model-params: 11.77 | optimizer: 79.97 | batch-generator: 6.48
+ iteration      115/    1000 | consumed samples:        58880 | elapsed time per iteration (ms): 7526.2 | learning rate: 1.399E-05 | global batch size:   512 | lm loss: 1.155671E-01 | loss scale: 32768.0 | grad norm: 0.154 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2084.85 | backward-compute: 5302.58 | backward-params-all-reduce: 52.93 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.31 | optimizer-unscale-and-check-inf: 11.76 | optimizer-clip-main-grad: 8.69 | optimizer-copy-main-to-model-params: 11.80 | optimizer: 80.14 | batch-generator: 6.38
+ iteration      116/    1000 | consumed samples:        59392 | elapsed time per iteration (ms): 7533.7 | learning rate: 1.397E-05 | global batch size:   512 | lm loss: 1.159025E-01 | loss scale: 32768.0 | grad norm: 0.370 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2084.67 | backward-compute: 5307.44 | backward-params-all-reduce: 55.96 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.33 | optimizer-unscale-and-check-inf: 11.75 | optimizer-clip-main-grad: 8.61 | optimizer-copy-main-to-model-params: 11.77 | optimizer: 80.04 | batch-generator: 6.56
+ iteration      117/    1000 | consumed samples:        59904 | elapsed time per iteration (ms): 7531.4 | learning rate: 1.395E-05 | global batch size:   512 | lm loss: 1.153677E-01 | loss scale: 32768.0 | grad norm: 0.005 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2089.84 | backward-compute: 5299.66 | backward-params-all-reduce: 56.18 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.31 | optimizer-unscale-and-check-inf: 11.75 | optimizer-clip-main-grad: 8.72 | optimizer-copy-main-to-model-params: 11.76 | optimizer: 80.05 | batch-generator: 6.50
+ iteration      118/    1000 | consumed samples:        60416 | elapsed time per iteration (ms): 7543.6 | learning rate: 1.393E-05 | global batch size:   512 | lm loss: 1.158849E-01 | loss scale: 32768.0 | grad norm: 0.409 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2092.20 | backward-compute: 5307.45 | backward-params-all-reduce: 57.90 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.31 | optimizer-unscale-and-check-inf: 11.74 | optimizer-clip-main-grad: 8.66 | optimizer-copy-main-to-model-params: 11.76 | optimizer: 80.03 | batch-generator: 6.51
+ iteration      119/    1000 | consumed samples:        60928 | elapsed time per iteration (ms): 7554.8 | learning rate: 1.391E-05 | global batch size:   512 | lm loss: 1.156340E-01 | loss scale: 32768.0 | grad norm: 0.269 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2104.24 | backward-compute: 5308.19 | backward-params-all-reduce: 56.74 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.34 | optimizer-unscale-and-check-inf: 11.72 | optimizer-clip-main-grad: 8.69 | optimizer-copy-main-to-model-params: 11.76 | optimizer: 79.97 | batch-generator: 6.41
+ iteration      120/    1000 | consumed samples:        61440 | elapsed time per iteration (ms): 7552.1 | learning rate: 1.389E-05 | global batch size:   512 | lm loss: 1.155176E-01 | loss scale: 32768.0 | grad norm: 0.214 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2106.10 | backward-compute: 5303.44 | backward-params-all-reduce: 56.77 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.33 | optimizer-unscale-and-check-inf: 11.72 | optimizer-clip-main-grad: 8.71 | optimizer-copy-main-to-model-params: 11.73 | optimizer: 80.01 | batch-generator: 6.46
+ iteration      121/    1000 | consumed samples:        61952 | elapsed time per iteration (ms): 7548.8 | learning rate: 1.387E-05 | global batch size:   512 | lm loss: 1.159975E-01 | loss scale: 32768.0 | grad norm: 0.413 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2098.77 | backward-compute: 5307.86 | backward-params-all-reduce: 56.11 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.34 | optimizer-unscale-and-check-inf: 11.77 | optimizer-clip-main-grad: 8.71 | optimizer-copy-main-to-model-params: 11.88 | optimizer: 80.19 | batch-generator: 6.95
+ iteration      122/    1000 | consumed samples:        62464 | elapsed time per iteration (ms): 7542.3 | learning rate: 1.385E-05 | global batch size:   512 | lm loss: 1.155740E-01 | loss scale: 32768.0 | grad norm: 0.083 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2094.05 | backward-compute: 5305.47 | backward-params-all-reduce: 56.69 | backward-embedding-all-reduce: 0.03 | optimizer-copy-to-main-grad: 11.30 | optimizer-unscale-and-check-inf: 11.76 | optimizer-clip-main-grad: 8.77 | optimizer-copy-main-to-model-params: 11.80 | optimizer: 80.22 | batch-generator: 6.39
+ iteration      123/    1000 | consumed samples:        62976 | elapsed time per iteration (ms): 7536.8 | learning rate: 1.383E-05 | global batch size:   512 | lm loss: 1.158121E-01 | loss scale: 32768.0 | grad norm: 0.338 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2089.68 | backward-compute: 5305.03 | backward-params-all-reduce: 56.22 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.30 | optimizer-unscale-and-check-inf: 11.74 | optimizer-clip-main-grad: 8.68 | optimizer-copy-main-to-model-params: 11.79 | optimizer: 80.03 | batch-generator: 6.52

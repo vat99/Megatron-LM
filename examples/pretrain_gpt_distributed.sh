@@ -19,7 +19,7 @@ python -m torch.distributed.launch $DISTRIBUTED_ARGS \
        --num-layers 48 \
        --hidden-size 1600 \
        --num-attention-heads 25 \
-       --micro-batch-size 4 \
+       --micro-batch-size 8 \
        --global-batch-size 512 \
        --seq-length 1024 \
        --max-position-embeddings 1024 \
@@ -31,7 +31,7 @@ python -m torch.distributed.launch $DISTRIBUTED_ARGS \
        --data-impl mmap \
        --split 800,100,100 \
        --distributed-backend nccl \
-       --lr 0.00015 \
+       --lr 0.000015 \
        --lr-decay-style cosine \
        --min-lr 1.0e-5 \
        --weight-decay 1e-2 \
@@ -40,6 +40,6 @@ python -m torch.distributed.launch $DISTRIBUTED_ARGS \
        --checkpoint-activations \
        --log-interval 1 \
        --save-interval 10000 \
-       --eval-interval 10 \
+       --eval-interval 1000 \
        --eval-iters 10 \
        --fp16

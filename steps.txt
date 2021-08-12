@@ -1,0 +1,4 @@
+# start the docker
+sudo docker run --gpus all -it --rm -v /home/ubuntu/Megatron:/workspace nvcr.io/nvidia/pytorch:20.12-py3
+
+# setup the dataset

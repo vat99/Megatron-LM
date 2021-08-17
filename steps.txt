@@ -14,3 +14,5 @@ python tools/preprocess_data.py \
 # run gpt2-xl 8node distributed
 ./examples/pretrain_gpt_distributed.sh 2>&1 | tee log_gpt_distributed.txt
 ./examples/pretrain_gpt_distributed.sh 2>&1 | tee log_gpt_distributed_1socket.txt
+./examples/pretrain_gpt.sh 2>&1 | tee log_gpt_bs64_1socket.txt
+./examples/pretrain_gpt_distributed.sh 2>&1 | tee log_gpt_distributed_bs1024.txt

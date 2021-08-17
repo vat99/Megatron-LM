@@ -2,7 +2,7 @@
 
 # Runs the "345M" parameter model
 
-GPUS_PER_NODE=1
+GPUS_PER_NODE=8
 # Change for multinode config
 MASTER_ADDR=localhost
 MASTER_PORT=6000

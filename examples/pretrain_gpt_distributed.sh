@@ -2,7 +2,7 @@
 
 # Runs the "345M" parameter model
 
-GPUS_PER_NODE=8
+GPUS_PER_NODE=1
 # Change for multinode config
 MASTER_ADDR=localhost
 MASTER_PORT=6000
@@ -20,7 +20,7 @@ python -m torch.distributed.launch $DISTRIBUTED_ARGS \
        --hidden-size 1600 \
        --num-attention-heads 25 \
        --micro-batch-size 8 \
-       --global-batch-size 512 \
+       --global-batch-size 64 \
        --seq-length 1024 \
        --max-position-embeddings 1024 \
        --train-iters 1000 \

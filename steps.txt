@@ -13,3 +13,6 @@ python tools/preprocess_data.py \
 
 # run gpt2-xl 8node distributed
 ./examples/pretrain_gpt_distributed.sh 2>&1 | tee log_gpt_distributed.txt
+
+# Cybertron repo measurement
+python -m torch.distributed.launch --nproc_per_node=8 --nnodes=1 --node_rank=0 --master_port=12345 measure_performance_final.py --effective_bs ${effective_batch_size} 2>&1 | tee ${fname}

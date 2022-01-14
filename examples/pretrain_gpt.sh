@@ -29,8 +29,8 @@ python pretrain_gpt.py \
        --weight-decay 1e-2 \
        --clip-grad 1.0 \
        --lr-warmup-fraction .01 \
-       --checkpoint-activations \
        --log-interval 1 \
+       --activations-checkpoint-method uniform \
        --save-interval 10000 \
        --eval-interval 1000 \
        --eval-iters 10 \

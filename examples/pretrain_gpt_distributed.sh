@@ -37,7 +37,7 @@ python -m torch.distributed.launch $DISTRIBUTED_ARGS \
        --weight-decay 1e-2 \
        --clip-grad 1.0 \
        --lr-warmup-fraction .01 \
-       --checkpoint-activations \
+       --activations-checkpoint-method uniform \
        --log-interval 1 \
        --save-interval 10000 \
        --eval-interval 1000 \

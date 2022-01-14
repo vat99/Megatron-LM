@@ -20,7 +20,7 @@ python -m torch.distributed.launch $DISTRIBUTED_ARGS \
        --hidden-size 1600 \
        --num-attention-heads 25 \
        --micro-batch-size 16 \
-       --global-batch-size 64 \
+       --global-batch-size 1024 \
        --seq-length 1024 \
        --max-position-embeddings 1024 \
        --train-iters 1000 \

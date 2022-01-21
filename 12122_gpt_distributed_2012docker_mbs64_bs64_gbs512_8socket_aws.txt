@@ -1,0 +1,489 @@
+using world size: 8, data-parallel-size: 8, tensor-model-parallel size: 1, pipeline-model-parallel size: 1 
+using torch.float16 for parameters ...
+Persistent fused layer norm kernel is supported from pytorch v1.11 (nvidia pytorch container paired with v1.11). Defaulting to no_persist_layer_norm=True
+------------------------ arguments ------------------------
+  accumulate_allreduce_grads_in_fp32 .............. False
+  activations_checkpoint_method ................... uniform
+  activations_checkpoint_num_layers ............... 1
+  adam_beta1 ...................................... 0.9
+  adam_beta2 ...................................... 0.999
+  adam_eps ........................................ 1e-08
+  adlr_autoresume ................................. False
+  adlr_autoresume_interval ........................ 1000
+  apply_query_key_layer_scaling ................... True
+  apply_residual_connection_post_layernorm ........ False
+  attention_dropout ............................... 0.1
+  attention_softmax_in_fp32 ....................... False
+  bert_binary_head ................................ True
+  bert_load ....................................... None
+  bf16 ............................................ False
+  bias_dropout_fusion ............................. True
+  bias_gelu_fusion ................................ True
+  biencoder_projection_dim ........................ 0
+  biencoder_shared_query_context_model ............ False
+  block_data_path ................................. None
+  clip_grad ....................................... 1.0
+  consumed_train_samples .......................... 0
+  consumed_valid_samples .......................... 0
+  data_impl ....................................... mmap
+  data_parallel_size .............................. 8
+  data_path ....................................... ['/workspace/Megatron-LM/my-gpt2_text_document']
+  dataloader_type ................................. single
+  DDP_impl ........................................ local
+  deallocate_pipeline_outputs ..................... False
+  decoder_seq_length .............................. None
+  distribute_checkpointed_activations ............. False
+  distributed_backend ............................. nccl
+  embedding_path .................................. None
+  empty_unused_memory_level ....................... 0
+  encoder_seq_length .............................. 1024
+  eod_mask_loss ................................... False
+  eval_interval ................................... 1000
+  eval_iters ...................................... 10
+  evidence_data_path .............................. None
+  exit_duration_in_mins ........................... None
+  exit_interval ................................... None
+  exit_signal_handler ............................. False
+  ffn_hidden_size ................................. 6400
+  finetune ........................................ False
+  fp16 ............................................ True
+  fp16_lm_cross_entropy ........................... False
+  fp32_residual_connection ........................ False
+  global_batch_size ............................... 512
+  hidden_dropout .................................. 0.1
+  hidden_size ..................................... 1600
+  hysteresis ...................................... 2
+  ict_head_size ................................... None
+  ict_load ........................................ None
+  img_dim ......................................... 224
+  indexer_batch_size .............................. 128
+  indexer_log_interval ............................ 1000
+  inference_batch_times_seqlen_threshold .......... 512
+  init_method_std ................................. 0.02
+  init_method_xavier_uniform ...................... False
+  initial_loss_scale .............................. 4294967296
+  kv_channels ..................................... 64
+  layernorm_epsilon ............................... 1e-05
+  lazy_mpu_init ................................... None
+  load ............................................ None
+  local_rank ...................................... 0
+  log_batch_size_to_tensorboard ................... False
+  log_interval .................................... 1
+  log_learning_rate_to_tensorboard ................ True
+  log_loss_scale_to_tensorboard ................... True
+  log_memory_to_tensorboard ....................... False
+  log_num_zeros_in_grad ........................... False
+  log_params_norm ................................. False
+  log_timers_to_tensorboard ....................... False
+  log_validation_ppl_to_tensorboard ............... False
+  log_world_size_to_tensorboard ................... False
+  loss_scale ...................................... None
+  loss_scale_window ............................... 1000
+  lr .............................................. 1.5e-05
+  lr_decay_iters .................................. 320
+  lr_decay_samples ................................ None
+  lr_decay_style .................................. cosine
+  lr_warmup_fraction .............................. 0.01
+  lr_warmup_iters ................................. 0
+  lr_warmup_samples ............................... 0
+  make_vocab_size_divisible_by .................... 128
+  mask_prob ....................................... 0.15
+  masked_softmax_fusion ........................... True
+  max_position_embeddings ......................... 1024
+  merge_file ...................................... /workspace/Megatron-LM/data/gpt2-merges.txt
+  micro_batch_size ................................ 64
+  min_loss_scale .................................. 1.0
+  min_lr .......................................... 1e-05
+  mmap_warmup ..................................... False
+  no_async_tensor_model_parallel_allreduce ........ False
+  no_load_optim ................................... None
+  no_load_rng ..................................... None
+  no_persist_layer_norm ........................... True
+  no_save_optim ................................... None
+  no_save_rng ..................................... None
+  num_attention_heads ............................. 25
+  num_channels .................................... 3
+  num_classes ..................................... 1000
+  num_layers ...................................... 48
+  num_layers_per_virtual_pipeline_stage ........... None
+  num_workers ..................................... 2
+  onnx_safe ....................................... None
+  openai_gelu ..................................... False
+  optimizer ....................................... adam
+  override_lr_scheduler ........................... False
+  params_dtype .................................... torch.float16
+  patch_dim ....................................... 16
+  pipeline_model_parallel_size .................... 1
+  pipeline_model_parallel_split_rank .............. None
+  query_in_block_prob ............................. 0.1
+  rampup_batch_size ............................... None
+  rank ............................................ 0
+  reset_attention_mask ............................ False
+  reset_position_ids .............................. False
+  retriever_report_topk_accuracies ................ []
+  retriever_score_scaling ......................... False
+  retriever_seq_length ............................ 256
+  sample_rate ..................................... 1.0
+  save ............................................ None
+  save_interval ................................... 10000
+  scatter_gather_tensors_in_pipeline .............. True
+  seed ............................................ 1234
+  seq_length ...................................... 1024
+  sgd_momentum .................................... 0.9
+  short_seq_prob .................................. 0.1
+  split ........................................... 800,100,100
+  tensor_model_parallel_size ...................... 1
+  tensorboard_dir ................................. None
+  tensorboard_log_interval ........................ 1
+  tensorboard_queue_size .......................... 1000
+  titles_data_path ................................ None
+  tokenizer_type .................................. GPT2BPETokenizer
+  train_iters ..................................... 1000
+  train_samples ................................... None
+  use_checkpoint_lr_scheduler ..................... False
+  use_contiguous_buffers_in_local_ddp ............. True
+  use_cpu_initialization .......................... None
+  use_one_sent_docs ............................... False
+  virtual_pipeline_model_parallel_size ............ None
+  vocab_extra_ids ................................. 0
+  vocab_file ...................................... /workspace/Megatron-LM/data/gpt2-vocab.json
+  weight_decay .................................... 0.01
+  world_size ...................................... 8
+-------------------- end of arguments ---------------------
+setting number of micro-batches to constant 1
+> building GPT2BPETokenizer tokenizer ...
+ > padded vocab (size: 50257) with 47 dummy tokens (new size: 50304)
+> initializing torch distributed ...
+> initializing tensor model parallel with size 1
+> initializing pipeline model parallel with size 1
+> setting random seeds to 1234 ...
+> initializing model parallel cuda seeds on global rank 0, model parallel rank 0, and data parallel rank 0 with model parallel seed: 3952 and data parallel seed: 1234
+> compiling dataset index builder ...
+make: Entering directory '/workspace/Megatron-LM/megatron/data'
+make: Nothing to be done for 'default'.
+make: Leaving directory '/workspace/Megatron-LM/megatron/data'
+>>> done with dataset index builder. Compilation time: 0.058 seconds
+> compiling and loading fused kernels ...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /workspace/Megatron-LM/megatron/fused_kernels/build/build.ninja...
+Building extension module scaled_upper_triang_masked_softmax_cuda...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module scaled_upper_triang_masked_softmax_cuda...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /workspace/Megatron-LM/megatron/fused_kernels/build/build.ninja...
+Building extension module scaled_masked_softmax_cuda...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module scaled_masked_softmax_cuda...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /workspace/Megatron-LM/megatron/fused_kernels/build/build.ninja...
+Building extension module fused_mix_prec_layer_norm_cuda...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module fused_mix_prec_layer_norm_cuda...
+>>> done with compiling and loading fused kernels. Compilation time: 0.946 seconds
+time to initialize megatron (seconds): 8.601
+[after megatron is initialized] datetime: 2022-01-21 18:57:29 
+building GPT model ...
+ > number of parameters on (tensor, pipeline) model parallel rank (0, 0): 1557686400
+> learning rate decay style: cosine
+[after model, optimizer, and learning rate scheduler are built] datetime: 2022-01-21 18:57:31 
+> building train, validation, and test datasets ...
+ > datasets target sizes (minimum size):
+    train:      512000
+    validation: 10240
+    test:       5120
+> building train, validation, and test datasets for GPT ...
+ > building dataset index ...
+    reading sizes...
+    reading pointers...
+    reading document index...
+    creating numpy buffer of mmap...
+    creating memory view of numpy buffer...
+ > finished creating indexed dataset in 0.000918 seconds
+    number of documents: 320
+ > dataset split:
+    train:
+     document indices in [0, 256) total of 256 documents
+    validation:
+     document indices in [256, 288) total of 32 documents
+    test:
+     document indices in [288, 320) total of 32 documents
+ > loading doc-idx mapping from /workspace/Megatron-LM/my-gpt2_text_document_train_indexmap_512000ns_1024sl_1234s_doc_idx.npy
+ > loading sample-idx mapping from /workspace/Megatron-LM/my-gpt2_text_document_train_indexmap_512000ns_1024sl_1234s_sample_idx.npy
+ > loading shuffle-idx mapping from /workspace/Megatron-LM/my-gpt2_text_document_train_indexmap_512000ns_1024sl_1234s_shuffle_idx.npy
+    loaded indexed file in 0.002 seconds
+    total number of samples: 512001
+    total number of epochs: 341334
+ > loading doc-idx mapping from /workspace/Megatron-LM/my-gpt2_text_document_valid_indexmap_10240ns_1024sl_1234s_doc_idx.npy
+ > loading sample-idx mapping from /workspace/Megatron-LM/my-gpt2_text_document_valid_indexmap_10240ns_1024sl_1234s_sample_idx.npy
+ > loading shuffle-idx mapping from /workspace/Megatron-LM/my-gpt2_text_document_valid_indexmap_10240ns_1024sl_1234s_shuffle_idx.npy
+    loaded indexed file in 0.001 seconds
+    total number of samples: 10241
+    total number of epochs: 54614
+ > loading doc-idx mapping from /workspace/Megatron-LM/my-gpt2_text_document_test_indexmap_5120ns_1024sl_1234s_doc_idx.npy
+ > loading sample-idx mapping from /workspace/Megatron-LM/my-gpt2_text_document_test_indexmap_5120ns_1024sl_1234s_sample_idx.npy
+ > loading shuffle-idx mapping from /workspace/Megatron-LM/my-gpt2_text_document_test_indexmap_5120ns_1024sl_1234s_shuffle_idx.npy
+    loaded indexed file in 0.001 seconds
+    total number of samples: 5121
+    total number of epochs: 27307
+> finished creating GPT datasets ...
+[after dataloaders are built] datetime: 2022-01-21 18:57:36 
+done with setup ...
+training ...
+time (ms) | model-and-optimizer-setup: 2053.72 | train/valid/test-data-iterators-setup: 4982.49
+[before the start of training step] datetime: 2022-01-21 18:57:36 
+Traceback (most recent call last):
+  File "pretrain_gpt.py", line 124, in <module>
+    pretrain(train_valid_test_datasets_provider, model_provider,
+  File "/workspace/Megatron-LM/megatron/training.py", line 146, in pretrain
+    iteration = train(forward_step_func,
+  File "/workspace/Megatron-LM/megatron/training.py", line 683, in train
+    train_step(forward_step_func,
+  File "/workspace/Megatron-LM/megatron/training.py", line 392, in train_step
+    losses_reduced = forward_backward_func(
+  File "/workspace/Megatron-LM/megatron/schedules.py", line 231, in forward_backward_no_pipelining
+    output_tensor = forward_step(forward_step_func, data_iterator, model,
+  File "/workspace/Megatron-LM/megatron/schedules.py", line 114, in forward_step
+    output_tensor, loss_func = forward_step_func(data_iterator, model)
+  File "pretrain_gpt.py", line 97, in forward_step
+    output_tensor = model(tokens, position_ids, attention_mask,
+  File "/opt/conda/lib/python3.8/site-packages/torch/nn/modules/module.py", line 744, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/workspace/Megatron-LM/megatron/model/distributed.py", line 71, in forward
+    return self.module(*inputs, **kwargs)
+  File "/opt/conda/lib/python3.8/site-packages/torch/nn/modules/module.py", line 744, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/workspace/Megatron-LM/megatron/model/module.py", line 192, in forward
+    outputs = self.module(*inputs, **kwargs)
+  File "/opt/conda/lib/python3.8/site-packages/torch/nn/modules/module.py", line 744, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/workspace/Megatron-LM/megatron/model/gpt_model.py", line 94, in forward
+    return post_language_model_processing(
+  File "/workspace/Megatron-LM/megatron/model/gpt_model.py", line 48, in post_language_model_processing
+    loss = mpu.vocab_parallel_cross_entropy(output.float(), labels)
+RuntimeError: CUDA out of memory. Tried to allocate 12.28 GiB (GPU 0; 39.59 GiB total capacity; 27.81 GiB already allocated; 8.84 GiB free; 28.61 GiB reserved in total by PyTorch)
+Traceback (most recent call last):
+  File "pretrain_gpt.py", line 124, in <module>
+    pretrain(train_valid_test_datasets_provider, model_provider,
+  File "/workspace/Megatron-LM/megatron/training.py", line 146, in pretrain
+    iteration = train(forward_step_func,
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/workspace/Megatron-LM/megatron/training.py", line 683, in train
+  File "pretrain_gpt.py", line 124, in <module>
+  File "pretrain_gpt.py", line 124, in <module>
+    train_step(forward_step_func,
+  File "/workspace/Megatron-LM/megatron/training.py", line 392, in train_step
+Traceback (most recent call last):
+    pretrain(train_valid_test_datasets_provider, model_provider,  File "pretrain_gpt.py", line 124, in <module>
+
+  File "/workspace/Megatron-LM/megatron/training.py", line 146, in pretrain
+    Traceback (most recent call last):
+pretrain(train_valid_test_datasets_provider, model_provider,  File "pretrain_gpt.py", line 124, in <module>
+
+  File "/workspace/Megatron-LM/megatron/training.py", line 146, in pretrain
+    losses_reduced = forward_backward_func(
+  File "/workspace/Megatron-LM/megatron/schedules.py", line 231, in forward_backward_no_pipelining
+Traceback (most recent call last):
+  File "pretrain_gpt.py", line 124, in <module>
+    iteration = train(forward_step_func,
+  File "/workspace/Megatron-LM/megatron/training.py", line 683, in train
+    iteration = train(forward_step_func,
+  File "/workspace/Megatron-LM/megatron/training.py", line 683, in train
+    output_tensor = forward_step(forward_step_func, data_iterator, model,
+  File "/workspace/Megatron-LM/megatron/schedules.py", line 114, in forward_step
+        output_tensor, loss_func = forward_step_func(data_iterator, model)pretrain(train_valid_test_datasets_provider, model_provider,
+  File "pretrain_gpt.py", line 97, in forward_step
+Traceback (most recent call last):
+
+  File "/workspace/Megatron-LM/megatron/training.py", line 146, in pretrain
+  File "pretrain_gpt.py", line 124, in <module>
+    output_tensor = model(tokens, position_ids, attention_mask,
+    train_step(forward_step_func,
+  File "/workspace/Megatron-LM/megatron/training.py", line 392, in train_step
+          File "/opt/conda/lib/python3.8/site-packages/torch/nn/modules/module.py", line 744, in _call_impl
+pretrain(train_valid_test_datasets_provider, model_provider,train_step(forward_step_func,
+  File "/workspace/Megatron-LM/megatron/training.py", line 392, in train_step
+    
+iteration = train(forward_step_func,
+  File "/workspace/Megatron-LM/megatron/training.py", line 146, in pretrain
+  File "/workspace/Megatron-LM/megatron/training.py", line 683, in train
+    pretrain(train_valid_test_datasets_provider, model_provider,
+  File "/workspace/Megatron-LM/megatron/training.py", line 146, in pretrain
+        losses_reduced = forward_backward_func(iteration = train(forward_step_func,
+
+  File "/workspace/Megatron-LM/megatron/schedules.py", line 231, in forward_backward_no_pipelining
+  File "/workspace/Megatron-LM/megatron/training.py", line 683, in train
+    losses_reduced = forward_backward_func(
+  File "/workspace/Megatron-LM/megatron/schedules.py", line 231, in forward_backward_no_pipelining
+    iteration = train(forward_step_func,
+  File "/workspace/Megatron-LM/megatron/training.py", line 683, in train
+        result = self.forward(*input, **kwargs)output_tensor = forward_step(forward_step_func, data_iterator, model,
+
+      File "/workspace/Megatron-LM/megatron/schedules.py", line 114, in forward_step
+    pretrain(train_valid_test_datasets_provider, model_provider,    output_tensor = forward_step(forward_step_func, data_iterator, model,train_step(forward_step_func,
+
+  File "/workspace/Megatron-LM/megatron/schedules.py", line 114, in forward_step
+  File "/workspace/Megatron-LM/megatron/training.py", line 392, in train_step
+  File "/workspace/Megatron-LM/megatron/model/distributed.py", line 71, in forward
+
+  File "/workspace/Megatron-LM/megatron/training.py", line 146, in pretrain
+    output_tensor, loss_func = forward_step_func(data_iterator, model)        
+output_tensor, loss_func = forward_step_func(data_iterator, model)train_step(forward_step_func,
+
+  File "pretrain_gpt.py", line 97, in forward_step
+  File "pretrain_gpt.py", line 97, in forward_step
+  File "/workspace/Megatron-LM/megatron/training.py", line 392, in train_step
+    return self.module(*inputs, **kwargs)
+  File "/opt/conda/lib/python3.8/site-packages/torch/nn/modules/module.py", line 744, in _call_impl
+                train_step(forward_step_func,    losses_reduced = forward_backward_func(output_tensor = model(tokens, position_ids, attention_mask,output_tensor = model(tokens, position_ids, attention_mask,iteration = train(forward_step_func,
+
+
+
+
+  File "/workspace/Megatron-LM/megatron/training.py", line 392, in train_step
+  File "/workspace/Megatron-LM/megatron/schedules.py", line 231, in forward_backward_no_pipelining
+  File "/workspace/Megatron-LM/megatron/training.py", line 683, in train
+  File "/opt/conda/lib/python3.8/site-packages/torch/nn/modules/module.py", line 744, in _call_impl
+  File "/opt/conda/lib/python3.8/site-packages/torch/nn/modules/module.py", line 744, in _call_impl
+    losses_reduced = forward_backward_func(
+  File "/workspace/Megatron-LM/megatron/schedules.py", line 231, in forward_backward_no_pipelining
+        output_tensor = forward_step(forward_step_func, data_iterator, model,result = self.forward(*input, **kwargs)
+    
+losses_reduced = forward_backward_func(  File "/workspace/Megatron-LM/megatron/schedules.py", line 114, in forward_step
+
+  File "/workspace/Megatron-LM/megatron/model/module.py", line 192, in forward
+  File "/workspace/Megatron-LM/megatron/schedules.py", line 231, in forward_backward_no_pipelining
+    output_tensor = forward_step(forward_step_func, data_iterator, model,
+  File "/workspace/Megatron-LM/megatron/schedules.py", line 114, in forward_step
+        output_tensor, loss_func = forward_step_func(data_iterator, model)outputs = self.module(*inputs, **kwargs)    train_step(forward_step_func,    
+
+    
+result = self.forward(*input, **kwargs)  File "pretrain_gpt.py", line 97, in forward_step
+output_tensor, loss_func = forward_step_func(data_iterator, model)
+  File "/opt/conda/lib/python3.8/site-packages/torch/nn/modules/module.py", line 744, in _call_impl
+
+  File "/workspace/Megatron-LM/megatron/training.py", line 392, in train_step
+      File "/workspace/Megatron-LM/megatron/model/distributed.py", line 71, in forward
+  File "pretrain_gpt.py", line 97, in forward_step
+output_tensor = forward_step(forward_step_func, data_iterator, model,
+  File "/workspace/Megatron-LM/megatron/schedules.py", line 114, in forward_step
+    result = self.forward(*input, **kwargs)
+  File "/workspace/Megatron-LM/megatron/model/distributed.py", line 71, in forward
+    output_tensor = model(tokens, position_ids, attention_mask,
+          File "/opt/conda/lib/python3.8/site-packages/torch/nn/modules/module.py", line 744, in _call_impl
+    return self.module(*inputs, **kwargs)output_tensor = model(tokens, position_ids, attention_mask,output_tensor, loss_func = forward_step_func(data_iterator, model)
+
+
+  File "/opt/conda/lib/python3.8/site-packages/torch/nn/modules/module.py", line 744, in _call_impl
+  File "pretrain_gpt.py", line 97, in forward_step
+  File "/opt/conda/lib/python3.8/site-packages/torch/nn/modules/module.py", line 744, in _call_impl
+    return self.module(*inputs, **kwargs)    
+losses_reduced = forward_backward_func(
+  File "/opt/conda/lib/python3.8/site-packages/torch/nn/modules/module.py", line 744, in _call_impl
+  File "/workspace/Megatron-LM/megatron/schedules.py", line 231, in forward_backward_no_pipelining
+    output_tensor = model(tokens, position_ids, attention_mask,
+  File "/opt/conda/lib/python3.8/site-packages/torch/nn/modules/module.py", line 744, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/workspace/Megatron-LM/megatron/model/gpt_model.py", line 94, in forward
+    output_tensor = forward_step(forward_step_func, data_iterator, model,
+  File "/workspace/Megatron-LM/megatron/schedules.py", line 114, in forward_step
+    return post_language_model_processing(
+  File "/workspace/Megatron-LM/megatron/model/gpt_model.py", line 48, in post_language_model_processing
+    result = self.forward(*input, **kwargs)
+  File "/workspace/Megatron-LM/megatron/model/module.py", line 192, in forward
+    result = self.forward(*input, **kwargs)
+  File "/workspace/Megatron-LM/megatron/model/distributed.py", line 71, in forward
+    output_tensor, loss_func = forward_step_func(data_iterator, model)
+      File "pretrain_gpt.py", line 97, in forward_step
+result = self.forward(*input, **kwargs)
+    result = self.forward(*input, **kwargs)    
+loss = mpu.vocab_parallel_cross_entropy(output.float(), labels)  File "/workspace/Megatron-LM/megatron/model/distributed.py", line 71, in forward
+  File "/workspace/Megatron-LM/megatron/model/module.py", line 192, in forward
+
+RuntimeError    result = self.forward(*input, **kwargs): 
+CUDA out of memory. Tried to allocate 12.28 GiB (GPU 7; 39.59 GiB total capacity; 27.81 GiB already allocated; 8.84 GiB free; 28.61 GiB reserved in total by PyTorch)    
+outputs = self.module(*inputs, **kwargs)
+  File "/workspace/Megatron-LM/megatron/model/distributed.py", line 71, in forward
+  File "/opt/conda/lib/python3.8/site-packages/torch/nn/modules/module.py", line 744, in _call_impl
+    return self.module(*inputs, **kwargs)
+  File "/opt/conda/lib/python3.8/site-packages/torch/nn/modules/module.py", line 744, in _call_impl
+    output_tensor = model(tokens, position_ids, attention_mask,
+  File "/opt/conda/lib/python3.8/site-packages/torch/nn/modules/module.py", line 744, in _call_impl
+    return self.module(*inputs, **kwargs)
+  File "/opt/conda/lib/python3.8/site-packages/torch/nn/modules/module.py", line 744, in _call_impl
+    outputs = self.module(*inputs, **kwargs)
+  File "/opt/conda/lib/python3.8/site-packages/torch/nn/modules/module.py", line 744, in _call_impl
+    return self.module(*inputs, **kwargs)
+  File "/opt/conda/lib/python3.8/site-packages/torch/nn/modules/module.py", line 744, in _call_impl
+        result = self.forward(*input, **kwargs)result = self.forward(*input, **kwargs)
+
+  File "/workspace/Megatron-LM/megatron/model/gpt_model.py", line 94, in forward
+  File "/workspace/Megatron-LM/megatron/model/module.py", line 192, in forward
+        result = self.forward(*input, **kwargs)result = self.forward(*input, **kwargs)
+
+  File "/workspace/Megatron-LM/megatron/model/gpt_model.py", line 94, in forward
+    result = self.forward(*input, **kwargs)
+  File "/workspace/Megatron-LM/megatron/model/module.py", line 192, in forward
+    result = self.forward(*input, **kwargs)
+  File "/workspace/Megatron-LM/megatron/model/distributed.py", line 71, in forward
+  File "/workspace/Megatron-LM/megatron/model/module.py", line 192, in forward
+    return post_language_model_processing(
+  File "/workspace/Megatron-LM/megatron/model/gpt_model.py", line 48, in post_language_model_processing
+    outputs = self.module(*inputs, **kwargs)
+  File "/opt/conda/lib/python3.8/site-packages/torch/nn/modules/module.py", line 744, in _call_impl
+    return post_language_model_processing(
+  File "/workspace/Megatron-LM/megatron/model/gpt_model.py", line 48, in post_language_model_processing
+    return self.module(*inputs, **kwargs)
+  File "/opt/conda/lib/python3.8/site-packages/torch/nn/modules/module.py", line 744, in _call_impl
+    outputs = self.module(*inputs, **kwargs)
+          File "/opt/conda/lib/python3.8/site-packages/torch/nn/modules/module.py", line 744, in _call_impl
+loss = mpu.vocab_parallel_cross_entropy(output.float(), labels)outputs = self.module(*inputs, **kwargs)
+
+  File "/opt/conda/lib/python3.8/site-packages/torch/nn/modules/module.py", line 744, in _call_impl
+    RuntimeErrorloss = mpu.vocab_parallel_cross_entropy(output.float(), labels): 
+CUDA out of memory. Tried to allocate 12.28 GiB (GPU 4; 39.59 GiB total capacity; 27.81 GiB already allocated; 8.56 GiB free; 28.61 GiB reserved in total by PyTorch)
+RuntimeError: CUDA out of memory. Tried to allocate 12.28 GiB (GPU 6; 39.59 GiB total capacity; 27.81 GiB already allocated; 8.56 GiB free; 28.61 GiB reserved in total by PyTorch)
+    result = self.forward(*input, **kwargs)
+  File "/workspace/Megatron-LM/megatron/model/gpt_model.py", line 94, in forward
+        result = self.forward(*input, **kwargs)result = self.forward(*input, **kwargs)
+
+  File "/workspace/Megatron-LM/megatron/model/module.py", line 192, in forward
+  File "/workspace/Megatron-LM/megatron/model/gpt_model.py", line 94, in forward
+        return post_language_model_processing(result = self.forward(*input, **kwargs)
+
+  File "/workspace/Megatron-LM/megatron/model/gpt_model.py", line 48, in post_language_model_processing
+  File "/workspace/Megatron-LM/megatron/model/gpt_model.py", line 94, in forward
+    return post_language_model_processing(
+  File "/workspace/Megatron-LM/megatron/model/gpt_model.py", line 48, in post_language_model_processing
+    outputs = self.module(*inputs, **kwargs)
+  File "/opt/conda/lib/python3.8/site-packages/torch/nn/modules/module.py", line 744, in _call_impl
+    loss = mpu.vocab_parallel_cross_entropy(output.float(), labels)
+    return post_language_model_processing(
+      File "/workspace/Megatron-LM/megatron/model/gpt_model.py", line 48, in post_language_model_processing
+loss = mpu.vocab_parallel_cross_entropy(output.float(), labels)
+RuntimeError: CUDA out of memory. Tried to allocate 12.28 GiB (GPU 2; 39.59 GiB total capacity; 27.81 GiB already allocated; 8.56 GiB free; 28.61 GiB reserved in total by PyTorch)
+RuntimeError: CUDA out of memory. Tried to allocate 12.28 GiB (GPU 5; 39.59 GiB total capacity; 27.81 GiB already allocated; 8.56 GiB free; 28.61 GiB reserved in total by PyTorch)
+    loss = mpu.vocab_parallel_cross_entropy(output.float(), labels)
+RuntimeError: CUDA out of memory. Tried to allocate 12.28 GiB (GPU 3; 39.59 GiB total capacity; 27.81 GiB already allocated; 8.56 GiB free; 28.61 GiB reserved in total by PyTorch)
+    result = self.forward(*input, **kwargs)
+  File "/workspace/Megatron-LM/megatron/model/gpt_model.py", line 94, in forward
+    return post_language_model_processing(
+  File "/workspace/Megatron-LM/megatron/model/gpt_model.py", line 48, in post_language_model_processing
+    loss = mpu.vocab_parallel_cross_entropy(output.float(), labels)
+RuntimeError: CUDA out of memory. Tried to allocate 12.28 GiB (GPU 1; 39.59 GiB total capacity; 27.81 GiB already allocated; 8.56 GiB free; 28.61 GiB reserved in total by PyTorch)
+Traceback (most recent call last):
+  File "/opt/conda/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/opt/conda/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/opt/conda/lib/python3.8/site-packages/torch/distributed/launch.py", line 303, in <module>
+    main()
+  File "/opt/conda/lib/python3.8/site-packages/torch/distributed/launch.py", line 294, in main
+    raise subprocess.CalledProcessError(returncode=process.returncode,
+subprocess.CalledProcessError: Command '['/opt/conda/bin/python', '-u', 'pretrain_gpt.py', '--local_rank=7', '--num-layers', '48', '--hidden-size', '1600', '--num-attention-heads', '25', '--micro-batch-size', '64', '--global-batch-size', '512', '--seq-length', '1024', '--max-position-embeddings', '1024', '--train-iters', '1000', '--lr-decay-iters', '320', '--data-path', '/workspace/Megatron-LM/my-gpt2_text_document', '--vocab-file', '/workspace/Megatron-LM/data/gpt2-vocab.json', '--merge-file', '/workspace/Megatron-LM/data/gpt2-merges.txt', '--data-impl', 'mmap', '--split', '800,100,100', '--distributed-backend', 'nccl', '--lr', '0.000015', '--lr-decay-style', 'cosine', '--min-lr', '1.0e-5', '--weight-decay', '1e-2', '--clip-grad', '1.0', '--lr-warmup-fraction', '.01', '--activations-checkpoint-method', 'uniform', '--log-interval', '1', '--save-interval', '10000', '--eval-interval', '1000', '--eval-iters', '10', '--fp16']' returned non-zero exit status 1.
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************

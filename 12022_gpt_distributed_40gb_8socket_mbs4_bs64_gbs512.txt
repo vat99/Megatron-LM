@@ -162,7 +162,7 @@ setting number of micro-batches to constant 16
 make: Entering directory '/home/varunt/Megatron-LM/megatron/data'
 make: Nothing to be done for 'default'.
 make: Leaving directory '/home/varunt/Megatron-LM/megatron/data'
->>> done with dataset index builder. Compilation time: 0.660 seconds
+>>> done with dataset index builder. Compilation time: 0.276 seconds
 > compiling and loading fused kernels ...
 Detected CUDA files, patching ldflags
 Emitting ninja build file /home/varunt/Megatron-LM/megatron/fused_kernels/build/build.ninja...
@@ -182,13 +182,13 @@ Building extension module fused_mix_prec_layer_norm_cuda...
 Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
 ninja: no work to do.
 Loading extension module fused_mix_prec_layer_norm_cuda...
->>> done with compiling and loading fused kernels. Compilation time: 2.900 seconds
-time to initialize megatron (seconds): 15.396
-[after megatron is initialized] datetime: 2022-01-21 01:56:09 
+>>> done with compiling and loading fused kernels. Compilation time: 0.974 seconds
+time to initialize megatron (seconds): 6.651
+[after megatron is initialized] datetime: 2022-01-21 02:25:11 
 building GPT model ...
  > number of parameters on (tensor, pipeline) model parallel rank (0, 0): 1557686400
 > learning rate decay style: cosine
-[after model, optimizer, and learning rate scheduler are built] datetime: 2022-01-21 01:56:11 
+[after model, optimizer, and learning rate scheduler are built] datetime: 2022-01-21 02:25:12 
 > building train, validation, and test datasets ...
  > datasets target sizes (minimum size):
     train:      512000
@@ -201,7 +201,7 @@ building GPT model ...
     reading document index...
     creating numpy buffer of mmap...
     creating memory view of numpy buffer...
- > finished creating indexed dataset in 0.041459 seconds
+ > finished creating indexed dataset in 0.014624 seconds
     number of documents: 495
  > dataset split:
     train:
@@ -210,43 +210,74 @@ building GPT model ...
      document indices in [395, 445) total of 50 documents
     test:
      document indices in [445, 495) total of 50 documents
+ > WARNING: could not find index map files, building the indices on rank 0 ...
+ > last epoch number of samples (1) is larger than 80% of number of samples per epoch (1), setting separate_last_epoch to False
+ > elasped time to build and save doc-idx mapping (seconds): 7.356466
+    using:
+     number of documents:       395
+     number of epochs:          265463
+     sequence length:           1024
+     total number of samples:   512001
+ > elasped time to build and save sample-idx mapping (seconds): 0.091474
+ > building shuffle index with split [0, 512001) and [512001, 512001) ...
+ > elasped time to build and save shuffle-idx mapping (seconds): 0.019883
  > loading doc-idx mapping from /home/varunt/Megatron-LM/my-gpt2_text_document_train_indexmap_512000ns_1024sl_1234s_doc_idx.npy
  > loading sample-idx mapping from /home/varunt/Megatron-LM/my-gpt2_text_document_train_indexmap_512000ns_1024sl_1234s_sample_idx.npy
  > loading shuffle-idx mapping from /home/varunt/Megatron-LM/my-gpt2_text_document_train_indexmap_512000ns_1024sl_1234s_shuffle_idx.npy
-    loaded indexed file in 0.010 seconds
+    loaded indexed file in 0.050 seconds
     total number of samples: 512002
     total number of epochs: 265463
+ > WARNING: could not find index map files, building the indices on rank 0 ...
+ > last epoch number of samples (1) is larger than 80% of number of samples per epoch (0), setting separate_last_epoch to False
+ > elasped time to build and save doc-idx mapping (seconds): 0.122455
+    using:
+     number of documents:       50
+     number of epochs:          41944
+     sequence length:           1024
+     total number of samples:   10240
+ > elasped time to build and save sample-idx mapping (seconds): 0.005108
+ > building shuffle index with split [0, 10240) and [10240, 10240) ...
+ > elasped time to build and save shuffle-idx mapping (seconds): 0.003588
  > loading doc-idx mapping from /home/varunt/Megatron-LM/my-gpt2_text_document_valid_indexmap_10240ns_1024sl_1234s_doc_idx.npy
  > loading sample-idx mapping from /home/varunt/Megatron-LM/my-gpt2_text_document_valid_indexmap_10240ns_1024sl_1234s_sample_idx.npy
  > loading shuffle-idx mapping from /home/varunt/Megatron-LM/my-gpt2_text_document_valid_indexmap_10240ns_1024sl_1234s_shuffle_idx.npy
-    loaded indexed file in 0.026 seconds
+    loaded indexed file in 0.007 seconds
     total number of samples: 10241
     total number of epochs: 41944
+ > WARNING: could not find index map files, building the indices on rank 0 ...
+ > last epoch number of samples (1) is larger than 80% of number of samples per epoch (0), setting separate_last_epoch to False
+ > elasped time to build and save doc-idx mapping (seconds): 0.043893
+    using:
+     number of documents:       50
+     number of epochs:          20972
+     sequence length:           1024
+     total number of samples:   5120
+ > elasped time to build and save sample-idx mapping (seconds): 0.004516
+ > building shuffle index with split [0, 5120) and [5120, 5120) ...
+ > elasped time to build and save shuffle-idx mapping (seconds): 0.002073
  > loading doc-idx mapping from /home/varunt/Megatron-LM/my-gpt2_text_document_test_indexmap_5120ns_1024sl_1234s_doc_idx.npy
  > loading sample-idx mapping from /home/varunt/Megatron-LM/my-gpt2_text_document_test_indexmap_5120ns_1024sl_1234s_sample_idx.npy
  > loading shuffle-idx mapping from /home/varunt/Megatron-LM/my-gpt2_text_document_test_indexmap_5120ns_1024sl_1234s_shuffle_idx.npy
-    loaded indexed file in 0.019 seconds
+    loaded indexed file in 0.005 seconds
     total number of samples: 5121
     total number of epochs: 20972
 > finished creating GPT datasets ...
-[after dataloaders are built] datetime: 2022-01-21 01:56:16 time (ms) | model-and-optimizer-setup: 2108.38 | train/valid/test-data-iterators-setup: 4576.78
-
+[after dataloaders are built] datetime: 2022-01-21 02:25:23 
 done with setup ...
 training ...
-[before the start of training step] datetime: 2022-01-21 01:56:16 
- iteration        1/    1000 | consumed samples:          512 | elapsed time per iteration (ms): 29463.0 | learning rate: 0.000E+00 | global batch size:   512 | loss scale: 4294967296.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
-time (ms) | forward-compute: 11597.87 | backward-compute: 14632.84 | backward-params-all-reduce: 2336.32 | backward-embedding-all-reduce: 0.04 | optimizer-copy-to-main-grad: 405.49 | optimizer-unscale-and-check-inf: 418.92 | optimizer: 824.50 | batch-generator: 201.85
- iteration        2/    1000 | consumed samples:         1024 | elapsed time per iteration (ms): 21888.7 | learning rate: 0.000E+00 | global batch size:   512 | loss scale: 2147483648.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
-time (ms) | forward-compute: 5750.05 | backward-compute: 13297.91 | backward-params-all-reduce: 2744.82 | backward-embedding-all-reduce: 0.04 | optimizer-copy-to-main-grad: 26.29 | optimizer-unscale-and-check-inf: 29.80 | optimizer: 58.38 | batch-generator: 158.09
- iteration        3/    1000 | consumed samples:         1536 | elapsed time per iteration (ms): 21502.2 | learning rate: 0.000E+00 | global batch size:   512 | loss scale: 1073741824.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
-time (ms) | forward-compute: 5596.79 | backward-compute: 13320.44 | backward-params-all-reduce: 2503.56 | backward-embedding-all-reduce: 0.03 | optimizer-copy-to-main-grad: 25.71 | optimizer-unscale-and-check-inf: 27.28 | optimizer: 55.24 | batch-generator: 127.56
- iteration        4/    1000 | consumed samples:         2048 | elapsed time per iteration (ms): 21569.1 | learning rate: 0.000E+00 | global batch size:   512 | loss scale: 536870912.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
-time (ms) | forward-compute: 5559.76 | backward-compute: 13216.84 | backward-params-all-reduce: 2645.17 | backward-embedding-all-reduce: 0.06 | optimizer-copy-to-main-grad: 37.72 | optimizer-unscale-and-check-inf: 39.42 | optimizer: 77.41 | batch-generator: 112.61
- iteration        5/    1000 | consumed samples:         2560 | elapsed time per iteration (ms): 21567.0 | learning rate: 0.000E+00 | global batch size:   512 | loss scale: 268435456.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
-time (ms) | forward-compute: 5713.14 | backward-compute: 13162.61 | backward-params-all-reduce: 2566.79 | backward-embedding-all-reduce: 0.06 | optimizer-copy-to-main-grad: 24.88 | optimizer-unscale-and-check-inf: 52.98 | optimizer: 80.15 | batch-generator: 129.81
- iteration        6/    1000 | consumed samples:         3072 | elapsed time per iteration (ms): 21512.0 | learning rate: 0.000E+00 | global batch size:   512 | loss scale: 134217728.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
-time (ms) | forward-compute: 5778.89 | backward-compute: 13174.88 | backward-params-all-reduce: 2464.57 | backward-embedding-all-reduce: 0.04 | optimizer-copy-to-main-grad: 41.84 | optimizer-unscale-and-check-inf: 27.28 | optimizer: 71.40 | batch-generator: 172.97
- iteration        7/    1000 | consumed samples:         3584 | elapsed time per iteration (ms): 21813.7 | learning rate: 0.000E+00 | global batch size:   512 | loss scale: 67108864.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
-time (ms) | forward-compute: 5771.90 | backward-compute: 13391.49 | backward-params-all-reduce: 2566.69 | backward-embedding-all-reduce: 0.04 | optimizer-copy-to-main-grad: 24.92 | optimizer-unscale-and-check-inf: 35.89 | optimizer: 61.09 | batch-generator: 180.10
- iteration        8/    1000 | consumed samples:         4096 | elapsed time per iteration (ms): 21830.2 | learning rate: 0.000E+00 | global batch size:   512 | loss scale: 33554432.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
-time (ms) | forward-compute: 5859.70 | backward-compute: 13367.45 | backward-params-all-reduce: 2474.65 | backward-embedding-all-reduce: 0.04 | optimizer-copy-to-main-grad: 42.30 | optimizer-unscale-and-check-inf: 50.18 | optimizer: 92.76 | batch-generator: 176.97
+time (ms) | model-and-optimizer-setup: 826.05 | train/valid/test-data-iterators-setup: 10679.74
+[before the start of training step] datetime: 2022-01-21 02:25:23 
+ iteration        1/    1000 | consumed samples:          512 | elapsed time per iteration (ms): 12993.7 | learning rate: 0.000E+00 | global batch size:   512 | loss scale: 4294967296.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 4611.41 | backward-compute: 6869.19 | backward-params-all-reduce: 1041.61 | backward-embedding-all-reduce: 0.03 | optimizer-copy-to-main-grad: 235.71 | optimizer-unscale-and-check-inf: 225.36 | optimizer: 461.16 | batch-generator: 29.66
+ iteration        2/    1000 | consumed samples:         1024 | elapsed time per iteration (ms): 9626.9 | learning rate: 0.000E+00 | global batch size:   512 | loss scale: 2147483648.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2679.85 | backward-compute: 5867.74 | backward-params-all-reduce: 1038.07 | backward-embedding-all-reduce: 0.04 | optimizer-copy-to-main-grad: 15.16 | optimizer-unscale-and-check-inf: 14.45 | optimizer: 29.78 | batch-generator: 79.11
+ iteration        3/    1000 | consumed samples:         1536 | elapsed time per iteration (ms): 9735.2 | learning rate: 0.000E+00 | global batch size:   512 | loss scale: 1073741824.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2771.47 | backward-compute: 5849.68 | backward-params-all-reduce: 1046.68 | backward-embedding-all-reduce: 0.05 | optimizer-copy-to-main-grad: 11.23 | optimizer-unscale-and-check-inf: 35.64 | optimizer: 47.05 | batch-generator: 17.14
+ iteration        4/    1000 | consumed samples:         2048 | elapsed time per iteration (ms): 9641.0 | learning rate: 0.000E+00 | global batch size:   512 | loss scale: 536870912.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2657.65 | backward-compute: 5895.05 | backward-params-all-reduce: 1049.11 | backward-embedding-all-reduce: 0.04 | optimizer-copy-to-main-grad: 13.19 | optimizer-unscale-and-check-inf: 14.57 | optimizer: 27.89 | batch-generator: 15.74
+ iteration        5/    1000 | consumed samples:         2560 | elapsed time per iteration (ms): 9815.3 | learning rate: 0.000E+00 | global batch size:   512 | loss scale: 268435456.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2727.63 | backward-compute: 6029.34 | backward-params-all-reduce: 1019.94 | backward-embedding-all-reduce: 0.05 | optimizer-copy-to-main-grad: 13.00 | optimizer-unscale-and-check-inf: 14.46 | optimizer: 27.61 | batch-generator: 49.09
+ iteration        6/    1000 | consumed samples:         3072 | elapsed time per iteration (ms): 10020.9 | learning rate: 0.000E+00 | global batch size:   512 | loss scale: 134217728.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2703.04 | backward-compute: 6220.90 | backward-params-all-reduce: 1040.37 | backward-embedding-all-reduce: 0.04 | optimizer-copy-to-main-grad: 12.05 | optimizer-unscale-and-check-inf: 34.08 | optimizer: 46.26 | batch-generator: 16.34
+ iteration        7/    1000 | consumed samples:         3584 | elapsed time per iteration (ms): 10043.3 | learning rate: 0.000E+00 | global batch size:   512 | loss scale: 67108864.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 2664.67 | backward-compute: 6303.11 | backward-params-all-reduce: 1040.93 | backward-embedding-all-reduce: 0.04 | optimizer-copy-to-main-grad: 11.21 | optimizer-unscale-and-check-inf: 13.26 | optimizer: 24.57 | batch-generator: 40.85

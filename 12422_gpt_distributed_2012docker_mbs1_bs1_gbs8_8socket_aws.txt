@@ -1,0 +1,321 @@
+using world size: 8, data-parallel-size: 8, tensor-model-parallel size: 1, pipeline-model-parallel size: 1 
+using torch.float16 for parameters ...
+Persistent fused layer norm kernel is supported from pytorch v1.11 (nvidia pytorch container paired with v1.11). Defaulting to no_persist_layer_norm=True
+------------------------ arguments ------------------------
+  accumulate_allreduce_grads_in_fp32 .............. False
+  activations_checkpoint_method ................... uniform
+  activations_checkpoint_num_layers ............... 1
+  adam_beta1 ...................................... 0.9
+  adam_beta2 ...................................... 0.999
+  adam_eps ........................................ 1e-08
+  adlr_autoresume ................................. False
+  adlr_autoresume_interval ........................ 1000
+  apply_query_key_layer_scaling ................... True
+  apply_residual_connection_post_layernorm ........ False
+  attention_dropout ............................... 0.1
+  attention_softmax_in_fp32 ....................... False
+  bert_binary_head ................................ True
+  bert_load ....................................... None
+  bf16 ............................................ False
+  bias_dropout_fusion ............................. True
+  bias_gelu_fusion ................................ True
+  biencoder_projection_dim ........................ 0
+  biencoder_shared_query_context_model ............ False
+  block_data_path ................................. None
+  clip_grad ....................................... 1.0
+  consumed_train_samples .......................... 0
+  consumed_valid_samples .......................... 0
+  data_impl ....................................... mmap
+  data_parallel_size .............................. 8
+  data_path ....................................... ['/workspace/Megatron-LM/my-gpt2_text_document']
+  dataloader_type ................................. single
+  DDP_impl ........................................ local
+  deallocate_pipeline_outputs ..................... False
+  decoder_seq_length .............................. None
+  distribute_checkpointed_activations ............. False
+  distributed_backend ............................. nccl
+  embedding_path .................................. None
+  empty_unused_memory_level ....................... 0
+  encoder_seq_length .............................. 1024
+  eod_mask_loss ................................... False
+  eval_interval ................................... 1000
+  eval_iters ...................................... 10
+  evidence_data_path .............................. None
+  exit_duration_in_mins ........................... None
+  exit_interval ................................... None
+  exit_signal_handler ............................. False
+  ffn_hidden_size ................................. 6400
+  finetune ........................................ False
+  fp16 ............................................ True
+  fp16_lm_cross_entropy ........................... False
+  fp32_residual_connection ........................ False
+  global_batch_size ............................... 8
+  hidden_dropout .................................. 0.1
+  hidden_size ..................................... 1600
+  hysteresis ...................................... 2
+  ict_head_size ................................... None
+  ict_load ........................................ None
+  img_dim ......................................... 224
+  indexer_batch_size .............................. 128
+  indexer_log_interval ............................ 1000
+  inference_batch_times_seqlen_threshold .......... 512
+  init_method_std ................................. 0.02
+  init_method_xavier_uniform ...................... False
+  initial_loss_scale .............................. 4294967296
+  kv_channels ..................................... 64
+  layernorm_epsilon ............................... 1e-05
+  lazy_mpu_init ................................... None
+  load ............................................ None
+  local_rank ...................................... 0
+  log_batch_size_to_tensorboard ................... False
+  log_interval .................................... 1
+  log_learning_rate_to_tensorboard ................ True
+  log_loss_scale_to_tensorboard ................... True
+  log_memory_to_tensorboard ....................... False
+  log_num_zeros_in_grad ........................... False
+  log_params_norm ................................. False
+  log_timers_to_tensorboard ....................... False
+  log_validation_ppl_to_tensorboard ............... False
+  log_world_size_to_tensorboard ................... False
+  loss_scale ...................................... None
+  loss_scale_window ............................... 1000
+  lr .............................................. 1.5e-05
+  lr_decay_iters .................................. 320
+  lr_decay_samples ................................ None
+  lr_decay_style .................................. cosine
+  lr_warmup_fraction .............................. 0.01
+  lr_warmup_iters ................................. 0
+  lr_warmup_samples ............................... 0
+  make_vocab_size_divisible_by .................... 128
+  mask_prob ....................................... 0.15
+  masked_softmax_fusion ........................... True
+  max_position_embeddings ......................... 1024
+  merge_file ...................................... /workspace/Megatron-LM/data/gpt2-merges.txt
+  micro_batch_size ................................ 1
+  min_loss_scale .................................. 1.0
+  min_lr .......................................... 1e-05
+  mmap_warmup ..................................... False
+  no_async_tensor_model_parallel_allreduce ........ False
+  no_load_optim ................................... None
+  no_load_rng ..................................... None
+  no_persist_layer_norm ........................... True
+  no_save_optim ................................... None
+  no_save_rng ..................................... None
+  num_attention_heads ............................. 25
+  num_channels .................................... 3
+  num_classes ..................................... 1000
+  num_layers ...................................... 48
+  num_layers_per_virtual_pipeline_stage ........... None
+  num_workers ..................................... 2
+  onnx_safe ....................................... None
+  openai_gelu ..................................... False
+  optimizer ....................................... adam
+  override_lr_scheduler ........................... False
+  params_dtype .................................... torch.float16
+  patch_dim ....................................... 16
+  pipeline_model_parallel_size .................... 1
+  pipeline_model_parallel_split_rank .............. None
+  query_in_block_prob ............................. 0.1
+  rampup_batch_size ............................... None
+  rank ............................................ 0
+  reset_attention_mask ............................ False
+  reset_position_ids .............................. False
+  retriever_report_topk_accuracies ................ []
+  retriever_score_scaling ......................... False
+  retriever_seq_length ............................ 256
+  sample_rate ..................................... 1.0
+  save ............................................ None
+  save_interval ................................... 10000
+  scatter_gather_tensors_in_pipeline .............. True
+  seed ............................................ 1234
+  seq_length ...................................... 1024
+  sgd_momentum .................................... 0.9
+  short_seq_prob .................................. 0.1
+  split ........................................... 800,100,100
+  tensor_model_parallel_size ...................... 1
+  tensorboard_dir ................................. None
+  tensorboard_log_interval ........................ 1
+  tensorboard_queue_size .......................... 1000
+  titles_data_path ................................ None
+  tokenizer_type .................................. GPT2BPETokenizer
+  train_iters ..................................... 1000
+  train_samples ................................... None
+  use_checkpoint_lr_scheduler ..................... False
+  use_contiguous_buffers_in_local_ddp ............. True
+  use_cpu_initialization .......................... None
+  use_one_sent_docs ............................... False
+  virtual_pipeline_model_parallel_size ............ None
+  vocab_extra_ids ................................. 0
+  vocab_file ...................................... /workspace/Megatron-LM/data/gpt2-vocab.json
+  weight_decay .................................... 0.01
+  world_size ...................................... 8
+-------------------- end of arguments ---------------------
+setting number of micro-batches to constant 1
+> building GPT2BPETokenizer tokenizer ...
+ > padded vocab (size: 50257) with 47 dummy tokens (new size: 50304)
+> initializing torch distributed ...
+> initializing tensor model parallel with size 1
+> initializing pipeline model parallel with size 1
+> setting random seeds to 1234 ...
+> initializing model parallel cuda seeds on global rank 0, model parallel rank 0, and data parallel rank 0 with model parallel seed: 3952 and data parallel seed: 1234
+> compiling dataset index builder ...
+make: Entering directory '/workspace/Megatron-LM/megatron/data'
+make: Nothing to be done for 'default'.
+make: Leaving directory '/workspace/Megatron-LM/megatron/data'
+>>> done with dataset index builder. Compilation time: 0.056 seconds
+WARNING: constraints for invoking optimized fused softmax kernel are not met. We default back to unfused kernel invocations.
+> compiling and loading fused kernels ...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /workspace/Megatron-LM/megatron/fused_kernels/build/build.ninja...
+Building extension module scaled_upper_triang_masked_softmax_cuda...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module scaled_upper_triang_masked_softmax_cuda...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /workspace/Megatron-LM/megatron/fused_kernels/build/build.ninja...
+Building extension module scaled_masked_softmax_cuda...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module scaled_masked_softmax_cuda...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /workspace/Megatron-LM/megatron/fused_kernels/build/build.ninja...
+Building extension module fused_mix_prec_layer_norm_cuda...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module fused_mix_prec_layer_norm_cuda...
+>>> done with compiling and loading fused kernels. Compilation time: 1.035 seconds
+time to initialize megatron (seconds): 8.922
+[after megatron is initialized] datetime: 2022-01-25 02:01:17 
+building GPT model ...
+ > number of parameters on (tensor, pipeline) model parallel rank (0, 0): 1557686400
+> learning rate decay style: cosine
+[after model, optimizer, and learning rate scheduler are built] datetime: 2022-01-25 02:01:19 
+> building train, validation, and test datasets ...
+ > datasets target sizes (minimum size):
+    train:      8000
+    validation: 160
+    test:       80
+> building train, validation, and test datasets for GPT ...
+ > building dataset index ...
+    reading sizes...
+    reading pointers...
+    reading document index...
+    creating numpy buffer of mmap...
+    creating memory view of numpy buffer...
+ > finished creating indexed dataset in 0.000843 seconds
+    number of documents: 320
+ > dataset split:
+    train:
+     document indices in [0, 256) total of 256 documents
+    validation:
+     document indices in [256, 288) total of 32 documents
+    test:
+     document indices in [288, 320) total of 32 documents
+ > WARNING: could not find index map files, building the indices on rank 0 ...
+ > last epoch number of samples (1) is larger than 80% of number of samples per epoch (1), setting separate_last_epoch to False
+ > elasped time to build and save doc-idx mapping (seconds): 0.051498
+    using:
+     number of documents:       256
+     number of epochs:          5334
+     sequence length:           1024
+     total number of samples:   8000
+ > elasped time to build and save sample-idx mapping (seconds): 0.001819
+ > building shuffle index with split [0, 8000) and [8000, 8000) ...
+ > elasped time to build and save shuffle-idx mapping (seconds): 0.000447
+ > loading doc-idx mapping from /workspace/Megatron-LM/my-gpt2_text_document_train_indexmap_8000ns_1024sl_1234s_doc_idx.npy
+ > loading sample-idx mapping from /workspace/Megatron-LM/my-gpt2_text_document_train_indexmap_8000ns_1024sl_1234s_sample_idx.npy
+ > loading shuffle-idx mapping from /workspace/Megatron-LM/my-gpt2_text_document_train_indexmap_8000ns_1024sl_1234s_shuffle_idx.npy
+    loaded indexed file in 0.001 seconds
+    total number of samples: 8001
+    total number of epochs: 5334
+ > WARNING: could not find index map files, building the indices on rank 0 ...
+ > last epoch number of samples (1) is larger than 80% of number of samples per epoch (0), setting separate_last_epoch to False
+ > elasped time to build and save doc-idx mapping (seconds): 0.001204
+    using:
+     number of documents:       32
+     number of epochs:          854
+     sequence length:           1024
+     total number of samples:   160
+ > elasped time to build and save sample-idx mapping (seconds): 0.000259
+ > building shuffle index with split [0, 160) and [160, 160) ...
+ > elasped time to build and save shuffle-idx mapping (seconds): 0.000216
+ > loading doc-idx mapping from /workspace/Megatron-LM/my-gpt2_text_document_valid_indexmap_160ns_1024sl_1234s_doc_idx.npy
+ > loading sample-idx mapping from /workspace/Megatron-LM/my-gpt2_text_document_valid_indexmap_160ns_1024sl_1234s_sample_idx.npy
+ > loading shuffle-idx mapping from /workspace/Megatron-LM/my-gpt2_text_document_valid_indexmap_160ns_1024sl_1234s_shuffle_idx.npy
+    loaded indexed file in 0.001 seconds
+    total number of samples: 161
+    total number of epochs: 854
+ > WARNING: could not find index map files, building the indices on rank 0 ...
+ > last epoch number of samples (1) is larger than 80% of number of samples per epoch (0), setting separate_last_epoch to False
+ > elasped time to build and save doc-idx mapping (seconds): 0.000707
+    using:
+     number of documents:       32
+     number of epochs:          427
+     sequence length:           1024
+     total number of samples:   80
+ > elasped time to build and save sample-idx mapping (seconds): 0.000254
+ > building shuffle index with split [0, 80) and [80, 80) ...
+ > elasped time to build and save shuffle-idx mapping (seconds): 0.000217
+ > loading doc-idx mapping from /workspace/Megatron-LM/my-gpt2_text_document_test_indexmap_80ns_1024sl_1234s_doc_idx.npy
+ > loading sample-idx mapping from /workspace/Megatron-LM/my-gpt2_text_document_test_indexmap_80ns_1024sl_1234s_sample_idx.npy
+ > loading shuffle-idx mapping from /workspace/Megatron-LM/my-gpt2_text_document_test_indexmap_80ns_1024sl_1234s_shuffle_idx.npy
+    loaded indexed file in 0.001 seconds
+    total number of samples: 81
+    total number of epochs: 427
+> finished creating GPT datasets ...
+[after dataloaders are built] datetime: 2022-01-25 02:01:23 
+done with setup ...
+training ...
+time (ms) | model-and-optimizer-setup: 2012.47 | train/valid/test-data-iterators-setup: 4712.65
+[before the start of training step] datetime: 2022-01-25 02:01:23 
+ iteration        1/    1000 | consumed samples:            8 | elapsed time per iteration (ms): 3898.9 | learning rate: 0.000E+00 | global batch size:     8 | loss scale: 4294967296.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 1956.37 | backward-compute: 626.35 | backward-params-all-reduce: 41.37 | backward-embedding-all-reduce: 0.03 | optimizer-copy-to-main-grad: 919.07 | optimizer-unscale-and-check-inf: 350.21 | optimizer: 1269.35 | batch-generator: 1.65
+ iteration        2/    1000 | consumed samples:           16 | elapsed time per iteration (ms): 312.6 | learning rate: 0.000E+00 | global batch size:     8 | loss scale: 2147483648.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 65.70 | backward-compute: 181.86 | backward-params-all-reduce: 28.35 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 18.42 | optimizer-unscale-and-check-inf: 13.02 | optimizer: 31.57 | batch-generator: 0.99
+ iteration        3/    1000 | consumed samples:           24 | elapsed time per iteration (ms): 305.4 | learning rate: 0.000E+00 | global batch size:     8 | loss scale: 1073741824.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 64.98 | backward-compute: 181.79 | backward-params-all-reduce: 28.36 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.22 | optimizer-unscale-and-check-inf: 13.92 | optimizer: 25.24 | batch-generator: 0.81
+ iteration        4/    1000 | consumed samples:           32 | elapsed time per iteration (ms): 304.6 | learning rate: 0.000E+00 | global batch size:     8 | loss scale: 536870912.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 65.28 | backward-compute: 181.75 | backward-params-all-reduce: 28.30 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.14 | optimizer-unscale-and-check-inf: 13.04 | optimizer: 24.28 | batch-generator: 0.86
+ iteration        5/    1000 | consumed samples:           40 | elapsed time per iteration (ms): 304.4 | learning rate: 0.000E+00 | global batch size:     8 | loss scale: 268435456.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 65.00 | backward-compute: 181.73 | backward-params-all-reduce: 28.43 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.21 | optimizer-unscale-and-check-inf: 12.97 | optimizer: 24.28 | batch-generator: 0.80
+ iteration        6/    1000 | consumed samples:           48 | elapsed time per iteration (ms): 304.4 | learning rate: 0.000E+00 | global batch size:     8 | loss scale: 134217728.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 65.05 | backward-compute: 181.80 | backward-params-all-reduce: 28.36 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.20 | optimizer-unscale-and-check-inf: 12.98 | optimizer: 24.27 | batch-generator: 0.80
+ iteration        7/    1000 | consumed samples:           56 | elapsed time per iteration (ms): 304.4 | learning rate: 0.000E+00 | global batch size:     8 | loss scale: 67108864.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 64.99 | backward-compute: 181.75 | backward-params-all-reduce: 28.48 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.21 | optimizer-unscale-and-check-inf: 12.92 | optimizer: 24.22 | batch-generator: 0.76
+ iteration        8/    1000 | consumed samples:           64 | elapsed time per iteration (ms): 304.4 | learning rate: 0.000E+00 | global batch size:     8 | loss scale: 33554432.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 65.08 | backward-compute: 181.79 | backward-params-all-reduce: 28.33 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.19 | optimizer-unscale-and-check-inf: 12.95 | optimizer: 24.23 | batch-generator: 0.78
+ iteration        9/    1000 | consumed samples:           72 | elapsed time per iteration (ms): 304.5 | learning rate: 0.000E+00 | global batch size:     8 | loss scale: 16777216.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 64.97 | backward-compute: 181.78 | backward-params-all-reduce: 28.47 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.23 | optimizer-unscale-and-check-inf: 12.99 | optimizer: 24.31 | batch-generator: 0.76
+ iteration       10/    1000 | consumed samples:           80 | elapsed time per iteration (ms): 304.5 | learning rate: 0.000E+00 | global batch size:     8 | loss scale: 8388608.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 65.10 | backward-compute: 181.82 | backward-params-all-reduce: 28.37 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.21 | optimizer-unscale-and-check-inf: 12.89 | optimizer: 24.19 | batch-generator: 0.81
+ iteration       11/    1000 | consumed samples:           88 | elapsed time per iteration (ms): 304.5 | learning rate: 0.000E+00 | global batch size:     8 | loss scale: 4194304.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 64.88 | backward-compute: 181.74 | backward-params-all-reduce: 28.54 | backward-embedding-all-reduce: 0.04 | optimizer-copy-to-main-grad: 11.22 | optimizer-unscale-and-check-inf: 12.94 | optimizer: 24.26 | batch-generator: 0.76
+ iteration       12/    1000 | consumed samples:           96 | elapsed time per iteration (ms): 304.5 | learning rate: 0.000E+00 | global batch size:     8 | loss scale: 2097152.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 65.10 | backward-compute: 181.82 | backward-params-all-reduce: 28.48 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.20 | optimizer-unscale-and-check-inf: 12.89 | optimizer: 24.18 | batch-generator: 0.81
+ iteration       13/    1000 | consumed samples:          104 | elapsed time per iteration (ms): 303.5 | learning rate: 0.000E+00 | global batch size:     8 | loss scale: 1048576.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 65.00 | backward-compute: 181.78 | backward-params-all-reduce: 28.52 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.20 | optimizer-unscale-and-check-inf: 11.91 | optimizer: 23.20 | batch-generator: 0.82
+ iteration       14/    1000 | consumed samples:          112 | elapsed time per iteration (ms): 303.4 | learning rate: 0.000E+00 | global batch size:     8 | loss scale: 524288.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 65.13 | backward-compute: 181.83 | backward-params-all-reduce: 28.42 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.21 | optimizer-unscale-and-check-inf: 11.79 | optimizer: 23.10 | batch-generator: 0.81
+ iteration       15/    1000 | consumed samples:          120 | elapsed time per iteration (ms): 303.4 | learning rate: 0.000E+00 | global batch size:     8 | loss scale: 262144.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 64.90 | backward-compute: 181.84 | backward-params-all-reduce: 28.56 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.21 | optimizer-unscale-and-check-inf: 11.84 | optimizer: 23.15 | batch-generator: 0.78
+ iteration       16/    1000 | consumed samples:          128 | elapsed time per iteration (ms): 303.7 | learning rate: 0.000E+00 | global batch size:     8 | loss scale: 131072.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 65.37 | backward-compute: 181.86 | backward-params-all-reduce: 28.46 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.22 | optimizer-unscale-and-check-inf: 11.75 | optimizer: 23.07 | batch-generator: 0.79
+ iteration       17/    1000 | consumed samples:          136 | elapsed time per iteration (ms): 303.8 | learning rate: 0.000E+00 | global batch size:     8 | loss scale: 65536.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 65.46 | backward-compute: 181.87 | backward-params-all-reduce: 28.48 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.22 | optimizer-unscale-and-check-inf: 11.72 | optimizer: 23.04 | batch-generator: 0.83
+[Rank 0] (after 18 iterations) memory (MB) | allocated: 30287.671875 | max allocated: 30287.6728515625 | reserved: 30344.0 | max reserved: 30344.0
+ iteration       18/    1000 | consumed samples:          144 | elapsed time per iteration (ms): 2665.6 | learning rate: 4.687E-06 | global batch size:     8 | lm loss: 1.130661E+01 | loss scale: 65536.0 | grad norm: 202.183 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 65.02 | backward-compute: 181.87 | backward-params-all-reduce: 28.44 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.21 | optimizer-unscale-and-check-inf: 11.81 | optimizer-clip-main-grad: 19.81 | optimizer-copy-main-to-model-params: 12.00 | optimizer: 2385.07 | batch-generator: 0.78
+ iteration       19/    1000 | consumed samples:          152 | elapsed time per iteration (ms): 373.0 | learning rate: 9.375E-06 | global batch size:     8 | lm loss: 1.129242E+01 | loss scale: 65536.0 | grad norm: 200.566 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 65.64 | backward-compute: 181.86 | backward-params-all-reduce: 28.40 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.19 | optimizer-unscale-and-check-inf: 11.81 | optimizer-clip-main-grad: 19.74 | optimizer-copy-main-to-model-params: 11.89 | optimizer: 91.36 | batch-generator: 0.92
+ iteration       20/    1000 | consumed samples:          160 | elapsed time per iteration (ms): 371.8 | learning rate: 1.406E-05 | global batch size:     8 | lm loss: 5.598294E+00 | loss scale: 65536.0 | grad norm: 84.467 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 65.12 | backward-compute: 181.80 | backward-params-all-reduce: 28.58 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.20 | optimizer-unscale-and-check-inf: 11.78 | optimizer-clip-main-grad: 19.72 | optimizer-copy-main-to-model-params: 11.76 | optimizer: 91.23 | batch-generator: 0.85
+ iteration       21/    1000 | consumed samples:          168 | elapsed time per iteration (ms): 371.4 | learning rate: 1.500E-05 | global batch size:     8 | lm loss: 3.095988E+00 | loss scale: 65536.0 | grad norm: 78.822 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 65.13 | backward-compute: 181.80 | backward-params-all-reduce: 28.49 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.20 | optimizer-unscale-and-check-inf: 11.76 | optimizer-clip-main-grad: 19.55 | optimizer-copy-main-to-model-params: 11.75 | optimizer: 90.91 | batch-generator: 0.85
+ iteration       22/    1000 | consumed samples:          176 | elapsed time per iteration (ms): 372.8 | learning rate: 1.500E-05 | global batch size:     8 | lm loss: 4.449603E+00 | loss scale: 65536.0 | grad norm: 68.662 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 66.09 | backward-compute: 181.84 | backward-params-all-reduce: 28.53 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.19 | optimizer-unscale-and-check-inf: 11.75 | optimizer-clip-main-grad: 19.67 | optimizer-copy-main-to-model-params: 11.70 | optimizer: 91.06 | batch-generator: 1.70
+ iteration       23/    1000 | consumed samples:          184 | elapsed time per iteration (ms): 371.5 | learning rate: 1.500E-05 | global batch size:     8 | lm loss: 3.316434E+00 | loss scale: 65536.0 | grad norm: 36.137 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 65.10 | backward-compute: 181.82 | backward-params-all-reduce: 28.56 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.18 | optimizer-unscale-and-check-inf: 11.73 | optimizer-clip-main-grad: 19.66 | optimizer-copy-main-to-model-params: 11.71 | optimizer: 90.99 | batch-generator: 0.86
+ iteration       24/    1000 | consumed samples:          192 | elapsed time per iteration (ms): 371.9 | learning rate: 1.500E-05 | global batch size:     8 | lm loss: 2.134538E+00 | loss scale: 65536.0 | grad norm: 32.843 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward-compute: 65.58 | backward-compute: 181.79 | backward-params-all-reduce: 28.49 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.19 | optimizer-unscale-and-check-inf: 11.74 | optimizer-clip-main-grad: 19.66 | optimizer-copy-main-to-model-params: 11.71 | optimizer: 90.91 | batch-generator: 0.87
+ iteration       25/    1000 | consumed samples:          200 | elapsed time per iteration (ms): 303.4 | learning rate: 1.500E-05 | global batch size:     8 | loss scale: 32768.0 | number of skipped iterations:   1 | number of nan iterations:   0 |
+time (ms) | forward-compute: 64.99 | backward-compute: 181.79 | backward-params-all-reduce: 28.49 | backward-embedding-all-reduce: 0.02 | optimizer-copy-to-main-grad: 11.20 | optimizer-unscale-and-check-inf: 11.79 | optimizer-clip-main-grad: 0.00 | optimizer-copy-main-to-model-params: 0.00 | optimizer: 23.10 | batch-generator: 0.83
